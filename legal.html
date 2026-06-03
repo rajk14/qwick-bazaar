@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Legal Center | QuickBazar Policies & Handbooks</title>
+    <meta name="description" content="Read QuickBazar's operational policies, user terms of service, customer refund agreements, and partner handbooks transparently."/>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2d8a39",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#3fa34d",
+                        "on-primary-container": "#f7fff1",
+                        secondary: "#745b00",
+                        "secondary-container": "#FFC107",
+                        "on-secondary-container": "#6e5700",
+                        background: "#f8f9ff",
+                        "on-surface": "#121c2a",
+                        "on-surface-variant": "#3f493d",
+                        outline: "#6f7a6c",
+                        "outline-variant": "#bfcaba",
+                        "surface-container": "#e6eeff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                        lg: "12px",
+                        xl: "16px",
+                        full: "9999px"
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .policy-section { display: none; }
+        .policy-section.active { display: block; }
+    </style>
+</head>
+<body class="bg-background text-on-surface transition-colors min-h-screen" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+    <!-- Header Placeholder -->
+    <div id="global-header"></div>
+
+    <main class="pt-32 pb-24 min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <!-- Hero Header -->
+            <header class="mb-12">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-on-surface mb-4">Legal Center</h1>
+                <p class="text-base text-on-surface-variant max-w-2xl leading-relaxed">
+                    Review how QuickBazar protects user privacy, maintains delivery service guidelines, manages refund criteria, and governs kirana partnerships.
+                </p>
+            </header>
+
+            <div class="flex flex-col md:flex-row gap-12 items-start">
+                <!-- Sticky Sidebar Navigation -->
+                <aside class="w-full md:w-64 md:sticky md:top-32 flex flex-row md:flex-col gap-2 overflow-x-auto hide-scrollbar pb-4 md:pb-0">
+                    <button class="flex-shrink-0 px-6 py-3 rounded-xl text-left font-bold text-sm bg-primary text-on-primary shadow-md transition-all duration-200" id="btn-privacy" onclick="switchTab('privacy')">
+                        Privacy Policy
+                    </button>
+                    <button class="flex-shrink-0 px-6 py-3 rounded-xl text-left font-medium text-sm text-on-surface-variant hover:bg-surface-container transition-all duration-200" id="btn-terms" onclick="switchTab('terms')">
+                        Terms of Service
+                    </button>
+                    <button class="flex-shrink-0 px-6 py-3 rounded-xl text-left font-medium text-sm text-on-surface-variant hover:bg-surface-container transition-all duration-200" id="btn-refund" onclick="switchTab('refund')">
+                        Refund Policy
+                    </button>
+                    <button class="flex-shrink-0 px-6 py-3 rounded-xl text-left font-medium text-sm text-on-surface-variant hover:bg-surface-container transition-all duration-200" id="btn-partner" onclick="switchTab('partner')">
+                        Partner Terms
+                    </button>
+                </aside>
+
+                <!-- Content Canvas -->
+                <div class="flex-1 bg-white dark:bg-surface-container p-6 md:p-12 rounded-2xl shadow-sm border border-outline-variant transition-colors">
+                    
+                    <!-- Privacy Policy Section -->
+                    <article class="policy-section active space-y-8 animate-in fade-in duration-500" id="policy-privacy">
+                        <div class="flex items-center gap-3 text-primary mb-2">
+                            <span class="material-symbols-outlined text-xl">security</span>
+                            <span class="font-bold text-xs uppercase tracking-wider">Last Updated: May 2026</span>
+                        </div>
+                        <h2 class="text-3xl font-extrabold text-on-surface">Privacy Policy</h2>
+                        <p class="text-sm text-on-surface-variant leading-relaxed">
+                            At QuickBazar, customer trust is our highest parameter. This policy details how we secure your data, utilize location coordinates for deliveries, and protect user banking credentials.
+                        </p>
+                        <div class="space-y-6">
+                            <section class="space-y-2">
+                                <h3 class="font-bold text-lg text-on-surface">1. User Data Collection</h3>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">
+                                    We collect basic registration inputs (Name, Phone number, email coordinates) to create secure user profiles, along with GPS coordinates strictly to direct rider dispatch.
+                                </p>
+                            </section>
+                            <section class="space-y-2">
+                                <h3 class="font-bold text-lg text-on-surface">2. Location Tracking Transparency</h3>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">
+                                    GPS coordinates are tracked in the background solely while your order is active. Location sharing can be completely toggled off inside mobile device settings.
+                                </p>
+                            </section>
+                        </div>
+                    </article>
+
+                    <!-- Terms of Service Section -->
+                    <article class="policy-section space-y-8 animate-in fade-in duration-500" id="policy-terms">
+                        <div class="flex items-center gap-3 text-primary mb-2">
+                            <span class="material-symbols-outlined text-xl">gavel</span>
+                            <span class="font-bold text-xs uppercase tracking-wider">Last Updated: April 2026</span>
+                        </div>
+                        <h2 class="text-3xl font-extrabold text-on-surface">Terms of Service</h2>
+                        <p class="text-sm text-on-surface-variant leading-relaxed">
+                            This agreement governs user access to the QuickBazar customer app, website portals, and our 10-minute neighborhood delivery agreements.
+                        </p>
+                        <div class="space-y-6">
+                            <section class="space-y-2">
+                                <h3 class="font-bold text-lg text-on-surface">1. Eligibility Parameters</h3>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">
+                                    Users must represent age limits above 18 years to place payment orders. Traditional Kirana items are cataloged in coordination with neighborhood retail availability.
+                                </p>
+                            </section>
+                            <section class="p-6 bg-secondary-container/15 border-l-4 border-secondary-container rounded-r-xl">
+                                <h4 class="font-bold text-sm text-on-secondary-container">Surge & Traffic Notice</h4>
+                                <p class="text-xs text-on-secondary-container/90 mt-1 leading-relaxed">
+                                    During extreme local rainstorms, surge parameters may apply to order fees to guarantee fair hazard payouts for our delivery riders.
+                                </p>
+                            </section>
+                        </div>
+                    </article>
+
+                    <!-- Refund Policy Section -->
+                    <article class="policy-section space-y-8 animate-in fade-in duration-500" id="policy-refund">
+                        <div class="flex items-center gap-3 text-primary mb-2">
+                            <span class="material-symbols-outlined text-xl">currency_exchange</span>
+                            <span class="font-bold text-xs uppercase tracking-wider">Last Updated: March 2026</span>
+                        </div>
+                        <h2 class="text-3xl font-extrabold text-on-surface">Refund & Cancellation Policy</h2>
+                        <p class="text-sm text-on-surface-variant leading-relaxed">
+                            We guarantee absolute freshness. If store packing fails to meet quality criteria, our support center will process fast compensations.
+                        </p>
+                        
+                        <!-- Scenarios matrix table -->
+                        <div class="border border-outline-variant rounded-2xl overflow-hidden shadow-sm mt-6">
+                            <table class="w-full text-left border-collapse text-sm">
+                                <thead>
+                                    <tr class="bg-surface-container-low dark:bg-surface-container-lowest text-on-surface font-bold">
+                                        <th class="p-4 border-b border-outline-variant">Order Issue Scenario</th>
+                                        <th class="p-4 border-b border-outline-variant">Refund Coverage</th>
+                                        <th class="p-4 border-b border-outline-variant">Settlement Speed</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-outline-variant/30 text-on-surface-variant">
+                                    <tr>
+                                        <td class="p-4 font-bold text-on-surface">Missing Grocery Items</td>
+                                        <td class="p-4 text-primary font-bold">100% Refund</td>
+                                        <td class="p-4">Instant to Wallet</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4 font-bold text-on-surface">Damaged Produce / Rotten Fruits</td>
+                                        <td class="p-4 text-primary font-bold">100% Refund</td>
+                                        <td class="p-4">1-2 Bank Days</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4 font-bold text-on-surface">Late Delivery (>30 Mins delay)</td>
+                                        <td class="p-4 text-primary font-bold">50% Credit Coupon</td>
+                                        <td class="p-4">Instant Application</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+
+                    <!-- Partner Terms Section -->
+                    <article class="policy-section space-y-8 animate-in fade-in duration-500" id="policy-partner">
+                        <div class="flex items-center gap-3 text-primary mb-2">
+                            <span class="material-symbols-outlined text-xl">handshake</span>
+                            <span class="font-bold text-xs uppercase tracking-wider">Last Updated: February 2026</span>
+                        </div>
+                        <h2 class="text-3xl font-extrabold text-on-surface">Partner Terms & Handbooks</h2>
+                        <p class="text-sm text-on-surface-variant leading-relaxed">
+                            Agreements and handbook document packages for our registered Kirana store retail owners and professional delivery riders.
+                        </p>
+                        
+                        <div class="bg-surface-container-low dark:bg-surface-container-lowest p-8 rounded-2xl flex flex-col items-center text-center max-w-md mx-auto border border-outline-variant">
+                            <span class="material-symbols-outlined text-[64px] text-primary mb-4">download</span>
+                            <h4 class="font-bold text-lg text-on-surface mb-2">Partner Operational Handbook</h4>
+                            <p class="text-xs text-on-surface-variant mb-6 leading-relaxed">Includes packing protocols, stock listings, safety metrics, and settlement calculations.</p>
+                            <button onclick="alert('Handbook PDF download successfully started!');" class="bg-primary hover:bg-primary-container text-on-primary font-bold px-8 py-3 rounded-xl text-xs transition-transform active:scale-95 shadow-md">Download Handbook PDF</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Global Footer -->
+    <div id="global-footer"></div>
+    <div id="mobile-footer-nav"></div>
+
+    <!-- Scripts -->
+    <script src="shared.js"></script>
+    <script>
+        function switchTab(policyId) {
+            // Hide all sections
+            document.querySelectorAll('.policy-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById('policy-' + policyId).classList.add('active');
+            
+            // Update button styles
+            document.querySelectorAll('aside button').forEach(btn => {
+                btn.className = 'flex-shrink-0 px-6 py-3 rounded-xl text-left font-medium text-sm text-on-surface-variant hover:bg-surface-container transition-all duration-200';
+            });
+            
+            const activeBtn = document.getElementById('btn-' + policyId);
+            activeBtn.className = 'flex-shrink-0 px-6 py-3 rounded-xl text-left font-bold text-sm bg-primary text-on-primary shadow-md transition-all duration-200';
+
+            // Smooth scroll to top of content on mobile
+            if (window.innerWidth < 768) {
+                document.getElementById('policy-' + policyId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    </script>
+</body>
+</html>

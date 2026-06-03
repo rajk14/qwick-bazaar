@@ -1,0 +1,365 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Checkout | QuickBazar Q-Commerce Terminal</title>
+    <meta name="description" content="Securely complete grocery and essentials purchases via QuickBazar UPI or credit payment simulators."/>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2d8a39",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#3fa34d",
+                        "on-primary-container": "#f7fff1",
+                        secondary: "#745b00",
+                        "secondary-container": "#FFC107",
+                        "on-secondary-container": "#6e5700",
+                        background: "#f8f9ff",
+                        "on-surface": "#121c2a",
+                        "on-surface-variant": "#3f493d",
+                        outline: "#6f7a6c",
+                        "outline-variant": "#bfcaba",
+                        "surface-container": "#e6eeff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                        lg: "12px",
+                        xl: "16px",
+                        full: "9999px"
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface transition-colors bg-slate-50 min-h-screen flex flex-col justify-between" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+    <!-- Header Placeholder -->
+    <div id="global-header"></div>
+
+    <main class="flex-grow pt-28 pb-16 px-4 max-w-7xl mx-auto w-full">
+        <!-- Main Cart Container -->
+        <div id="cart-workspace" class="grid lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left Side: Item Listings -->
+            <div class="lg:col-span-8 space-y-6">
+                <!-- Cart Items Card -->
+                <div class="bg-white dark:bg-surface-container p-6 md:p-8 rounded-3xl border border-outline-variant shadow-sm transition-colors">
+                    <h1 class="text-2xl font-extrabold text-on-surface mb-6 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-3xl">shopping_cart</span>
+                        Your Shopping Basket
+                    </h1>
+
+                    <div id="cart-items-list" class="divide-y divide-outline-variant/30">
+                        <!-- Dynamic items are rendered here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Delivery Address Selector card -->
+                <div class="bg-white dark:bg-surface-container p-6 rounded-2xl border border-outline-variant shadow-sm transition-colors flex justify-between items-center">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined">location_on</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm">Delivering Address</h4>
+                            <p class="text-xs text-on-surface-variant mt-0.5 selected-location-text">Indiranagar, Bengaluru</p>
+                        </div>
+                    </div>
+                    <button class="text-primary font-bold text-xs hover:underline location-trigger-btn">Change Location</button>
+                </div>
+            </div>
+
+            <!-- Right Side: Invoice & Payments -->
+            <div class="lg:col-span-4 space-y-6">
+                <!-- Invoice Billing Card -->
+                <div class="bg-white dark:bg-surface-container p-6 rounded-3xl border border-outline-variant shadow-sm transition-colors space-y-6">
+                    <h3 class="font-bold text-lg text-on-surface">Invoice Summary</h3>
+                    
+                    <!-- Promo Code Input -->
+                    <div class="flex gap-2">
+                        <input id="promo-input" class="flex-1 px-4 py-2 text-xs border border-outline-variant rounded-lg dark:bg-surface-container-lowest outline-none focus:ring-2 focus:ring-primary" placeholder="Enter FRESH20 or SUPER50"/>
+                        <button onclick="applyPromoCode()" class="bg-primary text-on-primary font-bold px-4 py-2 rounded-lg text-xs hover:opacity-90 active:scale-95 transition-all">Apply</button>
+                    </div>
+                    <div id="promo-alert" class="hidden text-[10px] font-bold text-primary">Promo applied!</div>
+
+                    <div class="space-y-3 text-sm border-t border-outline-variant/30 pt-4">
+                        <div class="flex justify-between text-on-surface-variant">
+                            <span>Cart Subtotal</span>
+                            <span id="bill-subtotal">₹0</span>
+                        </div>
+                        <div class="flex justify-between text-on-surface-variant">
+                            <span>GST Tax (5%)</span>
+                            <span id="bill-tax">₹0</span>
+                        </div>
+                        <div class="flex justify-between text-on-surface-variant">
+                            <span>Delivery Partner Payout</span>
+                            <span id="bill-delivery">₹30</span>
+                        </div>
+                        <div class="flex justify-between text-on-surface-variant">
+                            <span>Safety Handling Charges</span>
+                            <span>₹10</span>
+                        </div>
+                        <div id="promo-row" style="display:none;" class="flex justify-between text-primary font-bold">
+                            <span>Coupon Discount</span>
+                            <span id="bill-discount">-₹0</span>
+                        </div>
+                        <div class="flex justify-between text-on-surface font-extrabold text-base border-t border-outline-variant/30 pt-3">
+                            <span>Total Invoice</span>
+                            <span id="bill-total" class="text-primary">₹0</span>
+                        </div>
+                    </div>
+
+                    <!-- Payment selector -->
+                    <div class="space-y-3 pt-2">
+                        <p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Select Payment Method</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-3 p-3 border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-low transition-all">
+                                <input type="radio" name="pay-method" value="upi" checked class="text-primary focus:ring-primary">
+                                <span class="material-symbols-outlined text-primary text-xl">payments</span>
+                                <span class="text-xs font-bold text-on-surface">Instant Google Pay / UPI</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-low transition-all">
+                                <input type="radio" name="pay-method" value="card" class="text-primary focus:ring-primary">
+                                <span class="material-symbols-outlined text-primary text-xl">credit_card</span>
+                                <span class="text-xs font-bold text-on-surface">Credit / Debit Card</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-low transition-all">
+                                <input type="radio" name="pay-method" value="cod" class="text-primary focus:ring-primary">
+                                <span class="material-symbols-outlined text-primary text-xl">payments</span>
+                                <span class="text-xs font-bold text-on-surface">Cash on Delivery (COD)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button onclick="placeSimulationOrder()" class="w-full bg-primary hover:bg-primary-container text-on-primary py-4 rounded-xl font-bold hover:scale-[1.01] transition-all shadow-md flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined">verified_user</span> Confirm & Place Order
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Success View (Toggled dynamically) -->
+        <div id="order-success-view" class="hidden bg-white dark:bg-surface-container p-8 md:p-12 rounded-3xl border border-outline-variant shadow-2xl max-w-lg mx-auto text-center space-y-6 animate-in fade-in zoom-in-95 duration-300">
+            <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mx-auto">
+                <span class="material-symbols-outlined text-[48px]">check_circle</span>
+            </div>
+            
+            <div class="space-y-2">
+                <h1 class="text-3xl font-extrabold text-primary">Order Placed Successfully!</h1>
+                <p class="text-xs text-on-surface-variant" id="success-order-id">Order Reference: QB-9821</p>
+                <p class="text-sm text-on-surface-variant px-4">Your fresh essentials are being packed by your neighborhood store and will arrive in 10 minutes flat!</p>
+            </div>
+
+            <!-- Receipt Breakdown -->
+            <div class="bg-surface-container-low rounded-2xl p-6 text-sm text-left divide-y divide-outline-variant/30 space-y-2.5">
+                <div class="flex justify-between items-center font-bold text-on-surface">
+                    <span>Order Receipt</span>
+                    <span class="text-primary" id="success-total-invoice">₹0</span>
+                </div>
+                <div class="pt-2 text-xs text-on-surface-variant flex justify-between">
+                    <span>Delivery Address</span>
+                    <span class="font-bold text-on-surface selected-location-text">Indiranagar, Bengaluru</span>
+                </div>
+                <div class="pt-2 text-xs text-on-surface-variant flex justify-between">
+                    <span>Estimated Transit</span>
+                    <span class="font-bold text-primary flex items-center gap-0.5"><span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span> under 10 minutes</span>
+                </div>
+            </div>
+
+            <div class="flex gap-4">
+                <a href="support.html" class="flex-1 bg-primary text-on-primary font-bold py-3.5 rounded-xl text-xs hover:bg-primary-container transition-colors shadow-md flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-sm">distance</span> Track Order Live
+                </a>
+                <a href="index.html" class="flex-1 border border-outline-variant font-bold py-3.5 rounded-xl text-xs hover:bg-surface-container transition-colors flex items-center justify-center">
+                    Back to Shopping
+                </a>
+            </div>
+        </div>
+
+        <!-- Custom overlay load screen for processing payment -->
+        <div id="payment-overlay" class="fixed inset-0 z-[120] bg-black/70 items-center justify-center" style="display:none;">
+            <div class="bg-white dark:bg-surface-container p-8 rounded-2xl border border-outline-variant shadow-2xl text-center space-y-4 max-w-xs w-full mx-4">
+                <div class="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto"></div>
+                <p class="font-bold text-sm text-on-surface" id="overlay-status-text">Authorizing transaction securely...</p>
+                <p class="text-[10px] text-outline">Please do not refresh or hit browser back buttons.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Global Footer -->
+    <div id="global-footer"></div>
+    <div id="mobile-footer-nav"></div>
+
+    <!-- Scripts -->
+    <script src="shared.js"></script>
+    <script>
+        let discountRate = 0;
+
+        // Render function
+        function renderCartItems() {
+            const list = document.getElementById('cart-items-list');
+            const workspace = document.getElementById('cart-workspace');
+            const successView = document.getElementById('order-success-view');
+            const cart = CartSystem.get();
+
+            // Clear first
+            list.innerHTML = '';
+
+            if (cart.length === 0) {
+                list.innerHTML = `
+                <div class="p-12 text-center text-on-surface-variant text-sm space-y-4">
+                    <span class="material-symbols-outlined text-[64px] text-outline mb-2">shopping_basket</span>
+                    <p class="font-bold">Your Shopping Basket is currently empty!</p>
+                    <p class="text-xs">Add fresh veggies, dairy cups, or daily snacks from our categories to checkout.</p>
+                    <a href="index.html" class="inline-block bg-primary hover:bg-primary-container text-on-primary font-bold px-6 py-3 rounded-xl text-xs shadow-md transition-transform hover:scale-105 active:scale-95 mt-4">Go to Store Catalog</a>
+                </div>
+                `;
+                return;
+            }
+
+            cart.forEach(item => {
+                const row = document.createElement('div');
+                row.className = 'py-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-outline-variant/30 last:border-0';
+                row.innerHTML = `
+                <div class="flex gap-4 items-center">
+                    <img src="${item.img}" class="w-16 h-16 object-cover rounded-xl border border-outline-variant" alt="${item.name}"/>
+                    <div>
+                        <h4 class="font-bold text-sm text-on-surface">${item.name}</h4>
+                        <p class="text-xs text-on-surface-variant">₹${item.price} per unit</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between w-full sm:w-auto gap-8">
+                    <!-- Quantity controls -->
+                    <div class="flex items-center gap-3 border border-outline-variant rounded-lg p-1 bg-surface-container-low dark:bg-surface-container-lowest">
+                        <button onclick="changeQty('${item.id}', ${item.quantity - 1})" class="w-8 h-8 flex items-center justify-center text-outline hover:text-primary transition-colors font-bold">-</button>
+                        <span class="font-bold text-sm text-on-surface w-4 text-center">${item.quantity}</span>
+                        <button onclick="changeQty('${item.id}', ${item.quantity + 1})" class="w-8 h-8 flex items-center justify-center text-outline hover:text-primary transition-colors font-bold">+</button>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-extrabold text-sm text-primary">₹${item.price * item.quantity}</p>
+                        <button onclick="removeItem('${item.id}')" class="text-[10px] text-red-500 font-bold hover:underline mt-1 block">Remove</button>
+                    </div>
+                </div>
+                `;
+                list.appendChild(row);
+            });
+
+            // Update Billing
+            const subtotal = CartSystem.getTotal();
+            const tax = Math.round(subtotal * 0.05);
+            const deliveryFee = subtotal > 199 ? 0 : 30;
+            const discount = Math.round(subtotal * discountRate);
+            const total = subtotal + tax + deliveryFee + 10 - discount;
+
+            document.getElementById('bill-subtotal').textContent = `₹${subtotal}`;
+            document.getElementById('bill-tax').textContent = `₹${tax}`;
+            document.getElementById('bill-delivery').textContent = `₹${deliveryFee}`;
+            document.getElementById('bill-total').textContent = `₹${total}`;
+
+            if(discount > 0) {
+                document.getElementById('promo-row').style.display = 'flex';
+                document.getElementById('bill-discount').textContent = `-₹${discount}`;
+            } else {
+                document.getElementById('promo-row').style.display = 'none';
+            }
+        }
+
+        function changeQty(id, qty) {
+            CartSystem.updateQty(id, qty);
+            renderCartItems();
+        }
+
+        function removeItem(id) {
+            CartSystem.remove(id);
+            renderCartItems();
+        }
+
+        // Apply coupon code
+        function applyPromoCode() {
+            const promo = document.getElementById('promo-input').value.trim().toUpperCase();
+            const alertBox = document.getElementById('promo-alert');
+            
+            if (promo === 'FRESH20') {
+                discountRate = 0.20; // 20%
+                alertBox.textContent = 'FRESH20 applied! 20% Discount Deducted.';
+                alertBox.className = 'text-[10px] font-bold text-primary';
+                alertBox.classList.remove('hidden');
+            } else if (promo === 'SUPER50') {
+                discountRate = 0.50; // 50%
+                alertBox.textContent = 'SUPER50 applied! 50% Discount Deducted.';
+                alertBox.className = 'text-[10px] font-bold text-primary';
+                alertBox.classList.remove('hidden');
+            } else {
+                discountRate = 0;
+                alertBox.textContent = 'Invalid Coupon Code! Try: FRESH20 or SUPER50.';
+                alertBox.className = 'text-[10px] font-bold text-red-500';
+                alertBox.classList.remove('hidden');
+            }
+            renderCartItems();
+        }
+
+        // Order placement simulation
+        function placeSimulationOrder() {
+            const cart = CartSystem.get();
+            if(cart.length === 0) return alert('Your basket is empty! Please add groceries before paying.');
+
+            const method = document.querySelector('input[name="pay-method"]:checked').value;
+            const overlay = document.getElementById('payment-overlay');
+            const statusText = document.getElementById('overlay-status-text');
+
+            overlay.style.display = 'flex';
+
+            if(method === 'upi') {
+                statusText.textContent = 'Opening secure GPay/UPI portal...';
+            } else if(method === 'card') {
+                statusText.textContent = 'Authorizing card credentials...';
+            } else {
+                statusText.textContent = 'Booking Cash on Delivery payout...';
+            }
+
+            setTimeout(() => {
+                statusText.textContent = 'Confirming transaction settlements...';
+            }, 1000);
+
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                
+                // Set Receipt Billing
+                const finalTotal = document.getElementById('bill-total').textContent;
+                document.getElementById('success-total-invoice').textContent = finalTotal;
+
+                // Random Order ID
+                const randomId = 'QB-' + Math.floor(1000 + Math.random() * 9000);
+                document.getElementById('success-order-id').textContent = `Order Reference: ${randomId}`;
+
+                // Toggle views
+                document.getElementById('cart-workspace').style.display = 'none';
+                document.getElementById('order-success-view').classList.remove('hidden');
+
+                // Clear Central Cart System
+                CartSystem.clear();
+            }, 2200);
+        }
+
+        // Init render triggers
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCartItems();
+            window.addEventListener('cartUpdated', renderCartItems);
+        });
+    </script>
+</body>
+</html>

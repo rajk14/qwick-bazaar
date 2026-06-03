@@ -1,0 +1,641 @@
+﻿<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>QuickBazar - Fresh Groceries Delivered in 10 Minutes</title>
+    <meta name="description" content="Order fresh vegetables, organic fruits, daily dairy essentials, snacks, and personal care items from your favorite neighborhood dark stores. Lightning-fast 10-minute delivery in Bengaluru, Mumbai, and Delhi."/>
+    
+    <!-- Open Graph / Social SEO -->
+    <meta property="og:title" content="QuickBazar - 10-Minute Hyperlocal Grocery Delivery"/>
+    <meta property="og:description" content="Freshness delivered to your doorstep in 10 minutes. Handpicked essentials from trusted local shops."/>
+    <meta property="og:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuDnklD4iq3lSMq5ZUxqyYqyEAjDhxmJOpnyuvKvR-R1n5DZoeCOdanq_1PNG8ZD50gmbFqBMsk01yFFvsI6xwonpFWfAc3nSiA-E0kcAX3A3C1av90Qq7eB78yL1Fm2QmkcCQBarzIMxpWu8e7-0wEPIR1nUuJm-Pdkhgv_iZ2Qi2cduDUiNIumY2lIz-G1f_Q03CV-_L0q6w2UWLWWZVE28F-oOuhD2zVIJAokeT6U88vhaUeT_SZgvgCYH1EjfBV8DXtOip9GqyS5"/>
+    <meta property="og:type" content="website"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2d8a39",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#3fa34d",
+                        "on-primary-container": "#f7fff1",
+                        secondary: "#745b00",
+                        "secondary-container": "#FFC107",
+                        "on-secondary-container": "#6e5700",
+                        background: "#f8f9ff",
+                        "on-surface": "#121c2a",
+                        "on-surface-variant": "#3f493d",
+                        outline: "#6f7a6c",
+                        "outline-variant": "#bfcaba",
+                        "surface-container": "#e6eeff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                        lg: "12px",
+                        xl: "16px",
+                        full: "9999px"
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary-container dark:bg-slate-900 transition-colors" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+    <!-- Header Placeholder -->
+    <div id="global-header" class="hidden md:block"></div>
+
+    <div class="md:hidden bg-background text-on-surface min-h-screen pb-24">
+        <header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-container/80 backdrop-blur-md shadow-sm h-16 flex items-center px-4 justify-between">
+            <div class="flex items-center gap-2">
+                <button class="p-2 text-on-surface" id="mobile-burger-menu-btn" aria-label="Open menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <span class="text-2xl font-extrabold text-primary">QuickBazar</span>
+            </div>
+            <a class="p-2 text-on-surface-variant" href="cart.html" aria-label="Cart">
+                <span class="material-symbols-outlined">shopping_basket</span>
+            </a>
+        </header>
+
+        <div class="fixed inset-0 bg-black/50 z-50 opacity-0 pointer-events-none transition-opacity duration-300" id="mobile-sidebar-overlay"></div>
+        <aside class="fixed top-0 left-0 h-full w-64 bg-surface z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col pt-8" id="mobile-sidebar">
+            <div class="px-6 pb-8">
+                <span class="text-2xl font-extrabold text-primary">QuickBazar</span>
+            </div>
+            <nav class="flex flex-col">
+                <a class="px-6 py-4 flex items-center gap-4 text-on-surface font-bold" href="index.html">
+                    <span class="material-symbols-outlined">store</span> Store
+                </a>
+                <a class="px-6 py-4 flex items-center gap-4 text-on-surface font-bold" href="rider.html">
+                    <span class="material-symbols-outlined">delivery_dining</span> Rider
+                </a>
+                <a class="px-6 py-4 flex items-center gap-4 text-on-surface font-bold" href="partner.html">
+                    <span class="material-symbols-outlined">storefront</span> Partner
+                </a>
+                <a class="px-6 py-4 flex items-center gap-4 text-on-surface font-bold" href="serviceability.html">
+                    <span class="material-symbols-outlined">travel_explore</span> Delivery Areas
+                </a>
+                <a class="px-6 py-4 flex items-center gap-4 text-on-surface font-bold" href="bhagalpur.html">
+                    <span class="material-symbols-outlined">store</span> Bhagalpur
+                </a>
+                <a class="px-6 py-4 flex items-center gap-4 text-on-surface font-bold" href="support.html">
+                    <span class="material-symbols-outlined">help</span> Help
+                </a>
+            </nav>
+            <div class="mt-auto p-6 border-t border-outline-variant">
+                <button class="w-full bg-primary text-on-primary py-3 rounded-lg font-bold">Download App</button>
+            </div>
+        </aside>
+
+        <main class="pt-20 pb-24 px-4 max-w-md mx-auto">
+            <a class="w-full flex items-center gap-2 mb-6 p-4 bg-surface-container-low rounded-xl shadow-sm text-left" href="location.html">
+                <span class="material-symbols-outlined text-primary">location_on</span>
+                <span class="flex flex-col">
+                    <span class="text-xs text-on-surface-variant">Delivering to</span>
+                    <span class="text-sm font-bold text-on-surface selected-location-text">Indiranagar, Bengaluru</span>
+                </span>
+                <span class="material-symbols-outlined ml-auto text-on-surface-variant">expand_more</span>
+            </a>
+
+            <section class="relative rounded-2xl overflow-hidden aspect-[16/9] mb-8 group">
+                <img alt="Fresh groceries" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRiXjFVF5mupPMCnj1kwU25O1O3jMFcEhtEBC8Sy9GWFP8JSYQJXytKHQYzgQO84NTpqtgAqWpDLpJSNw_TnnTkV3qC0rFVuaRwZg-HPa28aB4w1pyit2pxwqYxN2AZOhtUnxHWu19GCtfRNWERDE0jNcEOYIgQl_7vjlQ5iVK7Ad3Zy6FGsS07l8DxVDt98D3jXOJeeF4ITm3jJ5AKvWLgKRH7XhPo-pM2QG8hZlsn7Jycj17q971PFRyJthmFRJJ7gyv7oLHwJRx"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex flex-col justify-end p-6">
+                    <h1 class="text-3xl font-extrabold text-white leading-tight mb-2">Groceries delivered in 10 mins</h1>
+                    <p class="text-base text-white/90">Fresh daily essentials at your doorstep.</p>
+                </div>
+            </section>
+
+            <div class="relative mb-8">
+                <span class="absolute inset-y-0 left-4 flex items-center material-symbols-outlined text-on-surface-variant">search</span>
+                <input class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl py-4 pl-12 pr-4 text-on-surface focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all shadow-sm" placeholder="Search for milk, eggs or bread" type="text"/>
+            </div>
+
+            <section class="mb-10">
+                <h2 class="text-xl font-bold text-on-surface mb-4">Shop by Category</h2>
+                <div class="grid grid-cols-1 gap-3">
+                    <button onclick="addFromHome('veg-1', 'Fresh Fruits & Veggies', 149, 'https://lh3.googleusercontent.com/aida-public/AB6AXuAmcANEqBcHGhMzq5v9pF8d8T5uNwMN4kFRBfUoDvfSc4Lbq4XSlvvNWqFoP5_dZx0bwuaertdusSqzqPvbLsUNwzXrZwzUZRBPElZs7aXJOrPluFMOgl7N9zS4oWLg3q1JwN65RT-oX3ttAUmFrELiWGpocv2htEj1cIwTaMtq6lxVIYSfT9Q3M0dQbNvk9kAFIGMxybdoYbb7TOu_SrujxMFtbUwssQOrUpjDanwyNKCrWqmhB-3XtafMRInvqxRILTTGJUW7-82D')" class="flex items-center gap-4 p-3 bg-surface-container-lowest border border-outline-variant rounded-xl hover:bg-surface-container-low transition-colors text-left">
+                        <span class="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center material-symbols-outlined text-primary text-3xl">eco</span>
+                        <span class="text-base font-bold text-on-surface flex-1">Fresh Fruits & Veggies</span>
+                        <span class="text-sm font-bold text-primary">₹149</span>
+                    </button>
+                    <button onclick="addFromHome('da-1', 'Dairy, Bread & Eggs', 45, 'https://lh3.googleusercontent.com/aida-public/AB6AXuBRd5SQ0IVu_q8ABNIfj5AjS97jgeNZes2eM32N_HGRoM0lY5lCbFqZiVLT74J3ALtPF1dWr7IgyXge8Mz-CZEsSJrrBvvEqfnHW5_cqMSikBdDOUmYBBQ8Z72oIMV8M9fPa-y3cntg_7wpr6GURTKqCfzSKHUEBEADpyFtBWaNd6PRYYjPvxI51na1nfloDqAFG0f3TIxFrky43IgBXeDr6ZKIeZt5Cyc8HEUW9gNyJPUwGTNW_yyG55FVRDDXOKDrP9qcb4fdGwzU')" class="flex items-center gap-4 p-3 bg-surface-container-lowest border border-outline-variant rounded-xl hover:bg-surface-container-low transition-colors text-left">
+                        <span class="w-14 h-14 rounded-lg bg-secondary-container/20 flex items-center justify-center material-symbols-outlined text-secondary text-3xl">egg</span>
+                        <span class="text-base font-bold text-on-surface flex-1">Dairy, Bread & Eggs</span>
+                        <span class="text-sm font-bold text-primary">₹45</span>
+                    </button>
+                    <button onclick="addFromHome('sn-1', 'Snacks & Beverages', 35, 'https://lh3.googleusercontent.com/aida-public/AB6AXuAJfDP1UIdBkVPPG2lVTVsjITHv_tvq6ghcMumMjaYhWQSiJI-OdBmqVau_INxd2yCHl23mKrsebisI0NeUtZfdvVj4TNbMnPunB89Hcq8TpSGbf3TrV6Oj7rqu3bsXITKz0cpFJqi-xERRo38dCWLFUAS6MLNkDY9ZKeqiCMFLMXcepoBm_StatjYsBogp3ag4O5NAkbxpyR7JP-qG06JxMYqjb2-svPaOgnMOP9w8faJmBLd4gcIMMzzeizJl_PVhzeoIxUOIFCjn')" class="flex items-center gap-4 p-3 bg-surface-container-lowest border border-outline-variant rounded-xl hover:bg-surface-container-low transition-colors text-left">
+                        <span class="w-14 h-14 rounded-lg bg-surface-container-high flex items-center justify-center material-symbols-outlined text-tertiary text-3xl">kitchen</span>
+                        <span class="text-base font-bold text-on-surface flex-1">Snacks & Beverages</span>
+                        <span class="text-sm font-bold text-primary">₹35</span>
+                    </button>
+                    <button onclick="addFromHome('pc-1', 'Personal Care', 55, 'https://lh3.googleusercontent.com/aida-public/AB6AXuA58_hJnFCrEtPBRBmUZGt-tpV6G6R41lERsM8WFlTWwl-uef3WwZWvT3UdH_bICV36mshKu8tO606q6IbNBAXlpu3uWMLEEHb9rFx0Coyr3QfvgKJjfN125LcxbgB9Wk-i6ipkqCMFKSkshY7YJaErT9VbFj8yEHlk83ZIFrS55wc8zaiOayO0p1r53K0D1X1QWptyVjJkVaLegt2jJmIS2tuqF7A2RfFwNDMSWQvx9GEcaValh_x11zPt9lelUW-LOYZ2hEMUpKPZ')" class="flex items-center gap-4 p-3 bg-surface-container-lowest border border-outline-variant rounded-xl hover:bg-surface-container-low transition-colors text-left">
+                        <span class="w-14 h-14 rounded-lg bg-error-container/20 flex items-center justify-center material-symbols-outlined text-error text-3xl">sanitizer</span>
+                        <span class="text-base font-bold text-on-surface flex-1">Personal Care</span>
+                        <span class="text-sm font-bold text-primary">₹55</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="mb-10">
+                <h2 class="text-xl font-bold text-on-surface mb-4">Why QuickBazar?</h2>
+                <div class="space-y-4">
+                    <div class="p-6 bg-primary-container text-on-primary rounded-2xl relative overflow-hidden">
+                        <span class="material-symbols-outlined text-4xl mb-2">timer</span>
+                        <h3 class="text-2xl font-bold mb-2">10-Minute Delivery</h3>
+                        <p class="text-base opacity-90">From our local dark-store to your door in the blink of an eye.</p>
+                    </div>
+                    <div class="p-6 bg-secondary-container text-on-secondary-container rounded-2xl">
+                        <span class="material-symbols-outlined text-4xl mb-2">verified</span>
+                        <h3 class="text-2xl font-bold mb-2">Safe & Fresh</h3>
+                        <p class="text-base opacity-90">Strict quality checks and hygienic handling for every item.</p>
+                    </div>
+                    <div class="p-6 bg-surface-container-high rounded-2xl border border-outline-variant">
+                        <span class="material-symbols-outlined text-4xl mb-2 text-primary">redeem</span>
+                        <h3 class="text-2xl font-bold mb-2 text-on-surface">Best Prices</h3>
+                        <p class="text-base text-on-surface-variant">Direct sourcing ensures you get the best deals in town.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-inverse-surface rounded-2xl p-8 text-center mb-8">
+                <h2 class="text-2xl font-bold text-inverse-on-surface mb-2">Get the full experience</h2>
+                <p class="text-base text-outline-variant mb-6">Track orders in real-time and get exclusive offers.</p>
+                <div class="flex flex-col gap-4">
+                    <button class="bg-black text-white px-6 py-3 rounded-lg flex items-center justify-center gap-3 border border-white/10" type="button">
+                        <span class="material-symbols-outlined">phone_iphone</span> App Store
+                    </button>
+                    <button class="bg-black text-white px-6 py-3 rounded-lg flex items-center justify-center gap-3 border border-white/10" type="button">
+                        <span class="material-symbols-outlined">play_arrow</span> Google Play
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-surface-container-lowest border-t border-outline-variant px-6 py-12">
+            <div class="flex flex-col gap-6 items-start">
+                <span class="text-xl font-bold text-on-surface">QuickBazar</span>
+                <p class="text-base text-on-surface-variant">&copy; 2026 QuickBazar India. Fast. Fresh. Local.</p>
+                <div class="grid grid-cols-2 gap-x-12 gap-y-4">
+                    <a class="text-xs text-on-surface-variant hover:text-primary underline" href="about.html">About Us</a>
+                    <a class="text-xs text-on-surface-variant hover:text-primary underline" href="legal.html">Terms of Service</a>
+                    <a class="text-xs text-on-surface-variant hover:text-primary underline" href="legal.html">Privacy Policy</a>
+                    <a class="text-xs text-on-surface-variant hover:text-primary underline" href="partner.html">Partner with Us</a>
+                    <a class="text-xs text-on-surface-variant hover:text-primary underline" href="serviceability.html">Delivery Areas</a>
+                    <a class="text-xs text-on-surface-variant hover:text-primary underline" href="bhagalpur.html">Bhagalpur</a>
+                    <a class="text-xs text-on-surface-variant hover:text-primary underline" href="rider.html">Careers</a>
+                    <a class="text-xs text-on-surface-variant hover:text-primary underline" href="about.html">Contact</a>
+                </div>
+            </div>
+        </footer>
+
+        <div class="fixed bottom-0 left-0 w-full p-4 bg-surface/90 backdrop-blur-md z-40 border-t border-outline-variant flex items-center justify-between">
+            <div class="flex flex-col">
+                <span class="text-sm font-bold text-on-surface">Experience faster app</span>
+                <span class="text-xs text-on-surface-variant">Extra 20% off on first order</span>
+            </div>
+            <button class="bg-primary text-on-primary px-6 py-3 rounded-lg font-bold shadow-lg active:scale-95 transition-transform" type="button">Download App</button>
+        </div>
+    </div>
+
+    <main class="hidden md:block pt-20">
+        <!-- Hero Section -->
+        <section class="relative overflow-hidden bg-surface-container-low py-16 md:py-24">
+            <div class="max-w-7xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-12 items-center">
+                <div class="z-10">
+                    <span class="inline-block bg-secondary-container text-on-secondary-container px-4 py-1.5 rounded-full font-bold text-xs mb-6">Superfast Delivery in 10 Minutes</span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-on-surface leading-tight mb-6">
+                        Groceries in <span class="text-primary">10 minutes.</span> Freshness at your door.
+                    </h1>
+                    <p class="text-lg text-on-surface-variant mb-8 max-w-md">
+                        Experience the fastest grocery delivery service in India. Handpicked fresh produce and daily essentials delivered before you can finish your coffee.
+                    </p>
+                    
+                    <!-- Direct Pincode/Location Checker -->
+                    <div class="flex flex-col sm:flex-row gap-4 mb-10">
+                        <div class="relative flex-1">
+                            <span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">my_location</span>
+                            <input id="hero-pincode-input" class="w-full pl-12 pr-4 py-4 rounded-xl border border-outline-variant dark:bg-surface-container-lowest outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="Enter pincode (e.g. 560034, 110001)" type="text"/>
+                        </div>
+                        <button id="hero-check-btn" class="bg-primary text-on-primary px-8 py-4 rounded-xl font-bold hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-primary/20">Find Store</button>
+                    </div>
+
+                    <!-- Customers Metrics -->
+                    <div class="flex items-center gap-6">
+                        <div class="flex -space-x-3">
+                            <img class="w-10 h-10 rounded-full border-2 border-surface shadow-sm" alt="Customer 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv5UxPl2mA_m1XN6RoPkgys8AiS2urn9pKHz6UyfI3MMUJNYdPc7stVnRP8y1YDIrUruEZG1maTKg2Pp3k15Nro1GHxjNjx5eM2oYyYFBzr5YFgZnrv4JmXv4krL2Piw6YboxseXpMLef3DkPP4xu8NZH5oyeebESPq_BnmDcAoOqp4TmlnibWvvRJdUDxiI3Sy114p-vGYeXn4x4GDRI4h8pLEaeZAHaONV10m7izqUe6kTb8bEIPfs1EoCUviLRw77oUWdvA4Z7D"/>
+                            <img class="w-10 h-10 rounded-full border-2 border-surface shadow-sm" alt="Customer 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMWQL7cXiEM_ZlbR8SSWdmD7gn8zBP3S2KR69NDD2-KQoMdtVkFEGZnCCSth2LW9KUaf2E6xaGGL6DWM3eRcBpN1a3hIrO_rEbpzzZc4XYJbJXNthSG6o_vOvpOTG83pHy5xkhBYULOPGjUX3mBCrpF0DbB_9iutG_lMQLc0EcI98Jv3m5R54gFKQNiwtjJciHyP4P40QETJdB6utIUDys2i6YJsZNfeTrCbgNbNAQw-lZDcX3HTn4hQF2dz4RTdZg4FS4Wm7G64A9"/>
+                            <img class="w-10 h-10 rounded-full border-2 border-surface shadow-sm" alt="Customer 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAM85iFmKos3INKp3oEAu5Fydv2ytV4JvuMHJhVgNk5mpf6hPCeM5ygghtYOHwb5v9KqaESIlzh8zEqUy6JyibxZBDMprBEiZ_xE9fF09ScuQYrOPw54Kn2IAqInvQmm3r0uOS2_eyT97lGFwDjOkl5PngraZF6-38wD_ouYjDJjuw3-hParlQ-H91zdjyy4E4ZpGm1mI0sQHnP8yaE0hJRv6bkLjLWCiqLRqaylNeKvoP-DLE5NiGX47cgVKUkky_lbX5R-DAPhegG"/>
+                        </div>
+                        <div class="text-sm text-on-surface-variant font-medium">
+                            <span class="font-bold text-on-surface">50,000+</span> happy customers in Bengaluru
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative flex justify-center items-center">
+                    <div class="absolute inset-0 bg-primary/5 rounded-full blur-3xl -z-10 animate-pulse"></div>
+                    <img class="w-full max-w-md drop-shadow-2xl hover:translate-y-[-10px] transition-transform duration-500" alt="QuickBazar App Screen Mockup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnklD4iq3lSMq5ZUxqyYqyEAjDhxmJOpnyuvKvR-R1n5DZoeCOdanq_1PNG8ZD50gmbFqBMsk01yFFvsI6xwonpFWfAc3nSiA-E0kcAX3A3C1av90Qq7eB78yL1Fm2QmkcCQBarzIMxpWu8e7-0wEPIR1nUuJm-Pdkhgv_iZ2Qi2cduDUiNIumY2lIz-G1f_Q03CV-_L0q6w2UWLWWZVE28F-oOuhD2zVIJAokeT6U88vhaUeT_SZgvgCYH1EjfBV8DXtOip9GqyS5"/>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Grid & Add to Cart Feature (Bento Style) -->
+        <section class="py-20 max-w-7xl mx-auto px-4 md:px-8">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl font-bold text-on-surface mb-2">Shop by Category</h2>
+                    <p class="text-sm text-on-surface-variant">Freshness hand-delivered from your local neighborhood dark stores.</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <!-- Highlight Veggies Card -->
+                <div class="col-span-2 row-span-2 group relative overflow-hidden rounded-2xl aspect-square bg-surface-container-low cursor-pointer">
+                    <img class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Fresh Organic Vegetables" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmcANEqBcHGhMzq5v9pF8d8T5uNwMN4kFRBfUoDvfSc4Lbq4XSlvvNWqFoP5_dZx0bwuaertdusSqzqPvbLsUNwzXrZwzUZRBPElZs7aXJOrPluFMOgl7N9zS4oWLg3q1JwN65RT-oX3ttAUmFrELiWGpocv2htEj1cIwTaMtq6lxVIYSfT9Q3M0dQbNvk9kAFIGMxybdoYbb7TOu_SrujxMFtbUwssQOrUpjDanwyNKCrWqmhB-3XtafMRInvqxRILTTGJUW7-82D"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 text-white pr-4">
+                        <p class="text-xl font-bold">Vibrant Veggies</p>
+                        <p class="text-xs opacity-90 mt-1">Farm-fresh tomatoes, bell peppers, and greens</p>
+                        <button onclick="addFromHome('veg-1', 'Vibrant Veggies Box', 149, 'https://lh3.googleusercontent.com/aida-public/AB6AXuAmcANEqBcHGhMzq5v9pF8d8T5uNwMN4kFRBfUoDvfSc4Lbq4XSlvvNWqFoP5_dZx0bwuaertdusSqzqPvbLsUNwzXrZwzUZRBPElZs7aXJOrPluFMOgl7N9zS4oWLg3q1JwN65RT-oX3ttAUmFrELiWGpocv2htEj1cIwTaMtq6lxVIYSfT9Q3M0dQbNvk9kAFIGMxybdoYbb7TOu_SrujxMFtbUwssQOrUpjDanwyNKCrWqmhB-3XtafMRInvqxRILTTGJUW7-82D')" class="mt-4 bg-secondary-container text-on-secondary-container font-bold px-4 py-2 rounded-xl text-xs hover:scale-105 active:scale-95 transition-transform flex items-center gap-1">Add to Cart - ₹149</button>
+                    </div>
+                </div>
+
+                <!-- Products categories -->
+                <div class="group bg-white dark:bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant hover:shadow-lg transition-all text-center flex flex-col justify-between">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-secondary-container/20 rounded-full overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform">
+                        <img class="w-full h-full object-cover" alt="Fresh Fruits" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmBGtjonqageIOxQ6R3WVpxgK7MaJVaRAAhNu_OcEAzUvidTuyXi1mIaI7PjqUY-6gSG56iHFL3InI-LZga9ryiugX3g440FEklryOolhzFs8TXOPfhnllQoOEo7eMGI22kNWuTJsBoVuStWWeJz84Mg_ocyOpmO9NTpN587p2kwT0gfKQ6OWUocbIfe5A-aqWsouDQNdIkPlTClRCgEFqKyr3K54qW-FTPIbjgbyTUvkmFBd2NW2IbhFtxCMMpCFv_QwZC1kKy5vU"/>
+                    </div>
+                    <div>
+                        <p class="font-bold text-on-surface text-sm">Fresh Fruit Cup</p>
+                        <p class="text-xs text-on-surface-variant mt-1">₹89</p>
+                    </div>
+                    <button onclick="addFromHome('fr-1', 'Fresh Fruit Cup', 89, 'https://lh3.googleusercontent.com/aida-public/AB6AXuCmBGtjonqageIOxQ6R3WVpxgK7MaJVaRAAhNu_OcEAzUvidTuyXi1mIaI7PjqUY-6gSG56iHFL3InI-LZga9ryiugX3g440FEklryOolhzFs8TXOPfhnllQoOEo7eMGI22kNWuTJsBoVuStWWeJz84Mg_ocyOpmO9NTpN587p2kwT0gfKQ6OWUocbIfe5A-aqWsouDQNdIkPlTClRCgEFqKyr3K54qW-FTPIbjgbyTUvkmFBd2NW2IbhFtxCMMpCFv_QwZC1kKy5vU')" class="mt-4 bg-primary text-on-primary py-2 rounded-xl text-xs font-bold hover:scale-105 transition-transform">Add to Cart</button>
+                </div>
+
+                <div class="group bg-white dark:bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant hover:shadow-lg transition-all text-center flex flex-col justify-between">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-secondary-container/20 rounded-full overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform">
+                        <img class="w-full h-full object-cover" alt="Dairy & Eggs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRd5SQ0IVu_q8ABNIfj5AjS97jgeNZes2eM32N_HGRoM0lY5lCbFqZiVLT74J3ALtPF1dWr7IgyXge8Mz-CZEsSJrrBvvEqfnHW5_cqMSikBdDOUmYBBQ8Z72oIMV8M9fPa-y3cntg_7wpr6GURTKqCfzSKHUEBEADpyFtBWaNd6PRYYjPvxI51na1nfloDqAFG0f3TIxFrky43IgBXeDr6ZKIeZt5Cyc8HEUW9gNyJPUwGTNW_yyG55FVRDDXOKDrP9qcb4fdGwzU"/>
+                    </div>
+                    <div>
+                        <p class="font-bold text-on-surface text-sm">Farm Fresh Milk</p>
+                        <p class="text-xs text-on-surface-variant mt-1">₹45</p>
+                    </div>
+                    <button onclick="addFromHome('da-1', 'Farm Fresh Milk', 45, 'https://lh3.googleusercontent.com/aida-public/AB6AXuBRd5SQ0IVu_q8ABNIfj5AjS97jgeNZes2eM32N_HGRoM0lY5lCbFqZiVLT74J3ALtPF1dWr7IgyXge8Mz-CZEsSJrrBvvEqfnHW5_cqMSikBdDOUmYBBQ8Z72oIMV8M9fPa-y3cntg_7wpr6GURTKqCfzSKHUEBEADpyFtBWaNd6PRYYjPvxI51na1nfloDqAFG0f3TIxFrky43IgBXeDr6ZKIeZt5Cyc8HEUW9gNyJPUwGTNW_yyG55FVRDDXOKDrP9qcb4fdGwzU')" class="mt-4 bg-primary text-on-primary py-2 rounded-xl text-xs font-bold hover:scale-105 transition-transform">Add to Cart</button>
+                </div>
+
+                <div class="group bg-white dark:bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant hover:shadow-lg transition-all text-center flex flex-col justify-between">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-secondary-container/20 rounded-full overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform">
+                        <img class="w-full h-full object-cover" alt="Bakery" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXCsXg1rs2tyqwJ6SHfW6uhLnV2kPs1hb4Umh13zInZaeBtG4K8s7Tfy-eo7S0SNA4Mql0dI8aoROWm4WehPQscQ93cYOLOdc2mH2O3xc58XK2ogwqbnyf-28wbCRWCQFq5TZpCSFzAv9coWjopt5fw79Sgl2UJRiBVgq9Wywdzax6ZtxlAu1VKdrOQR_MR9PT45kujagJekNT7i4ABK9Iy_w0LrfJYt03Z9bMu0yloQPts_cozomTM_r34mWMqTW7ylwU-G0YL6Xu"/>
+                    </div>
+                    <div>
+                        <p class="font-bold text-on-surface text-sm">Artisanal Bread</p>
+                        <p class="text-xs text-on-surface-variant mt-1">₹60</p>
+                    </div>
+                    <button onclick="addFromHome('ba-1', 'Artisanal Bread', 60, 'https://lh3.googleusercontent.com/aida-public/AB6AXuAXCsXg1rs2tyqwJ6SHfW6uhLnV2kPs1hb4Umh13zInZaeBtG4K8s7Tfy-eo7S0SNA4Mql0dI8aoROWm4WehPQscQ93cYOLOdc2mH2O3xc58XK2ogwqbnyf-28wbCRWCQFq5TZpCSFzAv9coWjopt5fw79Sgl2UJRiBVgq9Wywdzax6ZtxlAu1VKdrOQR_MR9PT45kujagJekNT7i4ABK9Iy_w0LrfJYt03Z9bMu0yloQPts_cozomTM_r34mWMqTW7ylwU-G0YL6Xu')" class="mt-4 bg-primary text-on-primary py-2 rounded-xl text-xs font-bold hover:scale-105 transition-transform">Add to Cart</button>
+                </div>
+
+                <div class="group bg-white dark:bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant hover:shadow-lg transition-all text-center flex flex-col justify-between">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-secondary-container/20 rounded-full overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform">
+                        <img class="w-full h-full object-cover" alt="Snacks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJfDP1UIdBkVPPG2lVTVsjITHv_tvq6ghcMumMjaYhWQSiJI-OdBmqVau_INxd2yCHl23mKrsebisI0NeUtZfdvVj4TNbMnPunB89Hcq8TpSGbf3TrV6Oj7rqu3bsXITKz0cpFJqi-xERRo38dCWLFUAS6MLNkDY9ZKeqiCMFLMXcepoBm_StatjYsBogp3ag4O5NAkbxpyR7JP-qG06JxMYqjb2-svPaOgnMOP9w8faJmBLd4gcIMMzzeizJl_PVhzeoIxUOIFCjn"/>
+                    </div>
+                    <div>
+                        <p class="font-bold text-on-surface text-sm">Potato Chips Pack</p>
+                        <p class="text-xs text-on-surface-variant mt-1">₹35</p>
+                    </div>
+                    <button onclick="addFromHome('sn-1', 'Potato Chips Pack', 35, 'https://lh3.googleusercontent.com/aida-public/AB6AXuAJfDP1UIdBkVPPG2lVTVsjITHv_tvq6ghcMumMjaYhWQSiJI-OdBmqVau_INxd2yCHl23mKrsebisI0NeUtZfdvVj4TNbMnPunB89Hcq8TpSGbf3TrV6Oj7rqu3bsXITKz0cpFJqi-xERRo38dCWLFUAS6MLNkDY9ZKeqiCMFLMXcepoBm_StatjYsBogp3ag4O5NAkbxpyR7JP-qG06JxMYqjb2-svPaOgnMOP9w8faJmBLd4gcIMMzzeizJl_PVhzeoIxUOIFCjn')" class="mt-4 bg-primary text-on-primary py-2 rounded-xl text-xs font-bold hover:scale-105 transition-transform">Add to Cart</button>
+                </div>
+
+                <div class="group bg-white dark:bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant hover:shadow-lg transition-all text-center flex flex-col justify-between">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-secondary-container/20 rounded-full overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform">
+                        <img class="w-full h-full object-cover" alt="Cleaning" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsyBoykd9medBB7DyeMd-vIWqynUfd8OvzhsOoxsM_7-iVhwsdApok8-JZF90CPEeZFERLzD-qTeUUtSlXw2CK15i_3akz0g08Y95GTku_9Mp0faDK-4jZfrMYc1t34OKk8O81eBeP_KaOjZsLqpranMiVLUT-k0Wi_8NGlErycMJjC7HiGO6gMLnT3SSEDM1185EW657mQFeVd9hos1kEA-tWQap7h3Cj2xo6SPLHiv7sFZecJ0QoPreeyJ5uablL2h6qxUd-bGOQ"/>
+                    </div>
+                    <div>
+                        <p class="font-bold text-on-surface text-sm">Hygienic Handwash</p>
+                        <p class="text-xs text-on-surface-variant mt-1">₹110</p>
+                    </div>
+                    <button onclick="addFromHome('cl-1', 'Hygienic Handwash', 110, 'https://lh3.googleusercontent.com/aida-public/AB6AXuBsyBoykd9medBB7DyeMd-vIWqynUfd8OvzhsOoxsM_7-iVhwsdApok8-JZF90CPEeZFERLzD-qTeUUtSlXw2CK15i_3akz0g08Y95GTku_9Mp0faDK-4jZfrMYc1t34OKk8O81eBeP_KaOjZsLqpranMiVLUT-k0Wi_8NGlErycMJjC7HiGO6gMLnT3SSEDM1185EW657mQFeVd9hos1kEA-tWQap7h3Cj2xo6SPLHiv7sFZecJ0QoPreeyJ5uablL2h6qxUd-bGOQ')" class="mt-4 bg-primary text-on-primary py-2 rounded-xl text-xs font-bold hover:scale-105 transition-transform">Add to Cart</button>
+                </div>
+
+                <div class="group bg-white dark:bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant hover:shadow-lg transition-all text-center flex flex-col justify-between">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-secondary-container/20 rounded-full overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform">
+                        <img class="w-full h-full object-cover" alt="Personal Care" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA58_hJnFCrEtPBRBmUZGt-tpV6G6R41lERsM8WFlTWwl-uef3WwZWvT3UdH_bICV36mshKu8tO606q6IbNBAXlpu3uWMLEEHb9rFx0Coyr3QfvgKJjfN125LcxbgB9Wk-i6ipkqCMFKSkshY7YJaErT9VbFj8yEHlk83ZIFrS55wc8zaiOayO0p1r53K0D1X1QWptyVjJkVaLegt2jJmIS2tuqF7A2RfFwNDMSWQvx9GEcaValh_x11zPt9lelUW-LOYZ2hEMUpKPZ"/>
+                    </div>
+                    <div>
+                        <p class="font-bold text-on-surface text-sm">Bamboo Toothbrush</p>
+                        <p class="text-xs text-on-surface-variant mt-1">₹55</p>
+                    </div>
+                    <button onclick="addFromHome('pc-1', 'Bamboo Toothbrush', 55, 'https://lh3.googleusercontent.com/aida-public/AB6AXuA58_hJnFCrEtPBRBmUZGt-tpV6G6R41lERsM8WFlTWwl-uef3WwZWvT3UdH_bICV36mshKu8tO606q6IbNBAXlpu3uWMLEEHb9rFx0Coyr3QfvgKJjfN125LcxbgB9Wk-i6ipkqCMFKSkshY7YJaErT9VbFj8yEHlk83ZIFrS55wc8zaiOayO0p1r53K0D1X1QWptyVjJkVaLegt2jJmIS2tuqF7A2RfFwNDMSWQvx9GEcaValh_x11zPt9lelUW-LOYZ2hEMUpKPZ')" class="mt-4 bg-primary text-on-primary py-2 rounded-xl text-xs font-bold hover:scale-105 transition-transform">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="py-24 bg-surface-container-lowest dark:bg-inverse-surface/10 transition-colors">
+            <div class="max-w-7xl mx-auto px-4 md:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-on-surface mb-4">How QuickBazar Works</h2>
+                    <p class="text-on-surface-variant max-w-2xl mx-auto">Get your daily essentials in three simple steps. We've optimized every second to ensure your order reaches you at lightning speed.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-12 relative">
+                    <!-- Connector Line (Desktop) -->
+                    <div class="hidden md:block absolute top-24 left-[15%] right-[15%] h-0.5 border-t-2 border-dashed border-outline-variant -z-10"></div>
+                    <div class="text-center group">
+                        <div class="w-24 h-24 mx-auto mb-8 bg-white dark:bg-surface-container border border-outline-variant rounded-full flex items-center justify-center shadow-md group-hover:border-primary transition-all relative">
+                            <span class="absolute -top-2 -right-2 bg-primary text-on-primary w-8 h-8 rounded-full flex items-center justify-center font-bold">1</span>
+                            <span class="material-symbols-outlined text-4xl text-primary">add_shopping_cart</span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-3">Order on App or Web</h3>
+                        <p class="text-sm text-on-surface-variant px-4">Browse thousands of handpicked fresh products and place your order in seconds.</p>
+                    </div>
+                    <div class="text-center group">
+                        <div class="w-24 h-24 mx-auto mb-8 bg-white dark:bg-surface-container border border-outline-variant rounded-full flex items-center justify-center shadow-md group-hover:border-primary transition-all relative">
+                            <span class="absolute -top-2 -right-2 bg-primary text-on-primary w-8 h-8 rounded-full flex items-center justify-center font-bold">2</span>
+                            <span class="material-symbols-outlined text-4xl text-primary">inventory_2</span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-3">Instant Packing</h3>
+                        <p class="text-sm text-on-surface-variant px-4">Our nearest neighborhood partner packs your fresh items in less than 2 minutes.</p>
+                    </div>
+                    <div class="text-center group">
+                        <div class="w-24 h-24 mx-auto mb-8 bg-white dark:bg-surface-container border border-outline-variant rounded-full flex items-center justify-center shadow-md group-hover:border-primary transition-all relative">
+                            <span class="absolute -top-2 -right-2 bg-primary text-on-primary w-8 h-8 rounded-full flex items-center justify-center font-bold">3</span>
+                            <span class="material-symbols-outlined text-4xl text-primary">delivery_dining</span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-3">10-Minute Delivery</h3>
+                        <p class="text-sm text-on-surface-variant px-4">Our professional delivery rider delivers fresh essentials right to your doorstep.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Brand Trust Badges -->
+        <section class="py-20 max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="p-6 bg-white dark:bg-surface-container-lowest border border-outline-variant rounded-2xl flex items-center gap-4 hover:shadow-md transition-shadow">
+                <span class="material-symbols-outlined text-primary text-4xl">verified</span>
+                <div>
+                    <h4 class="font-bold text-sm">Verified Local Stores</h4>
+                    <p class="text-xs text-on-surface-variant mt-0.5">Sourced from neighborhood partners</p>
+                </div>
+            </div>
+            <div class="p-6 bg-white dark:bg-surface-container-lowest border border-outline-variant rounded-2xl flex items-center gap-4 hover:shadow-md transition-shadow">
+                <span class="material-symbols-outlined text-primary text-4xl">distance</span>
+                <div>
+                    <h4 class="font-bold text-sm">Live GPS Tracking</h4>
+                    <p class="text-xs text-on-surface-variant mt-0.5">Monitor your rider in real time</p>
+                </div>
+            </div>
+            <div class="p-6 bg-white dark:bg-surface-container-lowest border border-outline-variant rounded-2xl flex items-center gap-4 hover:shadow-md transition-shadow">
+                <span class="material-symbols-outlined text-primary text-4xl">shield_with_heart</span>
+                <div>
+                    <h4 class="font-bold text-sm">100% Safe Payments</h4>
+                    <p class="text-xs text-on-surface-variant mt-0.5">Encrypted payment gateways</p>
+                </div>
+            </div>
+            <div class="p-6 bg-white dark:bg-surface-container-lowest border border-outline-variant rounded-2xl flex items-center gap-4 hover:shadow-md transition-shadow">
+                <span class="material-symbols-outlined text-primary text-4xl">nutrition</span>
+                <div>
+                    <h4 class="font-bold text-sm">Quality Guaranteed</h4>
+                    <p class="text-xs text-on-surface-variant mt-0.5">Checked for freshness daily</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partner & Rider CTA Cards -->
+        <section class="py-20 max-w-7xl mx-auto px-4 md:px-8">
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="relative overflow-hidden rounded-3xl bg-primary text-on-primary p-10 md:p-16 flex flex-col justify-between group h-[380px] shadow-lg">
+                    <div class="z-10">
+                        <h3 class="text-4xl font-extrabold mb-4 leading-tight">Partner with us</h3>
+                        <p class="text-base opacity-90 mb-8 max-w-xs">List your local retail or kirana store on QuickBazar and grow your sales 10x with our tech platform.</p>
+                        <a href="partner.html" class="inline-block bg-white text-primary font-bold px-8 py-3.5 rounded-xl hover:shadow-xl hover:scale-105 active:scale-95 transition-all text-sm">Register Store</a>
+                    </div>
+                    <div class="absolute bottom-0 right-0 opacity-10 group-hover:scale-110 transition-transform duration-700 pointer-events-none">
+                        <span class="material-symbols-outlined text-[240px]">storefront</span>
+                    </div>
+                </div>
+
+                <div class="relative overflow-hidden rounded-3xl bg-secondary-container text-on-secondary-container p-10 md:p-16 flex flex-col justify-between group h-[380px] shadow-lg">
+                    <div class="z-10">
+                        <h3 class="text-4xl font-extrabold mb-4 leading-tight">Become a Rider</h3>
+                        <p class="text-base opacity-90 mb-8 max-w-xs">Earn highly competitive pay, choose flexible schedules, and get paid weekly with bonuses.</p>
+                        <a href="rider.html" class="inline-block bg-on-secondary-container text-white font-bold px-8 py-3.5 rounded-xl hover:shadow-xl hover:scale-105 active:scale-95 transition-all text-sm">Apply Now</a>
+                    </div>
+                    <div class="absolute bottom-0 right-0 opacity-10 group-hover:scale-110 transition-transform duration-700 pointer-events-none">
+                        <span class="material-symbols-outlined text-[240px]">electric_scooter</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- App Preview Carousel -->
+        <section class="py-24 bg-surface-container-low overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 md:px-8 mb-12 flex justify-between items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-on-surface">Experience the App</h2>
+                    <p class="text-sm text-on-surface-variant mt-1">Stunning native user interface engineered for extreme loading speed.</p>
+                </div>
+                <div class="flex gap-4">
+                    <button id="slide-left-btn" class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center bg-white dark:bg-surface-container-lowest hover:bg-primary hover:text-on-primary transition-all shadow-sm">
+                        <span class="material-symbols-outlined">arrow_back</span>
+                    </button>
+                    <button id="slide-right-btn" class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center bg-white dark:bg-surface-container-lowest hover:bg-primary hover:text-on-primary transition-all shadow-sm">
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Horizontal Carousel container -->
+            <div id="carousel-track" class="flex gap-8 px-4 md:px-8 overflow-x-auto hide-scrollbar scroll-smooth pb-10">
+                <div class="flex-none w-[280px] rounded-3xl overflow-hidden shadow-xl border-8 border-inverse-surface bg-inverse-surface">
+                    <img class="w-full object-cover" alt="QuickBazar Fruit Categories Screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWaqrW64I8atBE4qj3KwV_g8AuQb6vn-gAHGClmwivj7-4Q7Bw2sxcG-wSVxFeGjKs9DcZKywnsaN7oWVkgug5LWXUaNalRVvgarsS9IikjnUROEYJw-BNR1KcZXwfWn3eyB99_u5sYXLv3UjNVq3JbOHilyFv-FBCzuK_zUXDimXMXkFywTs2Eu2nW9VYL8SHq__SuQ1C6TdF50rE4B8P6W30P70MPtsyhdHgepF0GxgCU1uP5IjUQTK0fErNJP9FQU6K3gDRlVWF"/>
+                </div>
+                <div class="flex-none w-[280px] rounded-3xl overflow-hidden shadow-xl border-8 border-inverse-surface bg-inverse-surface mt-12">
+                    <img class="w-full object-cover" alt="Checkout Cart Order Tracker Screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPIyIZE4M4e79CcJXKNwbXY_5Go979wAJfgPM-sJJCNLs9-7aM1rU2Rezr7dVBHMdOPLDtxHyY-v8wlOMkMI_dV7eFrYCiLdwQXTRqqutcmlyZvGe649PH88_gyj0vF7yMyQlit9j9W3Zmrr1MBCy6jyT351PiffKl7uYP5Zw6lhZNPW7tMTBhFyr6GEIN5wbxMzIIzucK9gtZQTpqvxN4uELdFHe6-YOR5MLhsM5Ym8RiokXA-_aZP_fxlAaR3_CVAtcXV933kj0x"/>
+                </div>
+                <div class="flex-none w-[280px] rounded-3xl overflow-hidden shadow-xl border-8 border-inverse-surface bg-inverse-surface">
+                    <img class="w-full object-cover" alt="Vibrant Categories Selection Screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDx0l73-MoFlxJWPTfsrw9WImvg6rdQiV5Rg3jZ_8F6TZDpQlJSpuINsd80Mf2BqMb8euxzdgww6wcExunkdGhX9VXTyUrrZ97gn65x8frMLj8LS9RATqmfxiBWUEBYiZo9PM8g3QVCkxKhMYEsFSZh4MF-hi4DUmHZ-NitkMpp6xgqAlTBlDvsNXuv7EoEIFnGjO9AjkGUTfW3cDmw6GfC7HaUj3o58-tpeasgJIVegFbmXEnlwttct6BO9qS2TLVikAkIEETZBuyZ"/>
+                </div>
+                <div class="flex-none w-[280px] rounded-3xl overflow-hidden shadow-xl border-8 border-inverse-surface bg-inverse-surface mt-12">
+                    <img class="w-full object-cover" alt="Realtime Rider Map GPS Tracking Screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApoYVjdzbenTAFrJeZjx5fToJ5jPw7mW5ghxD82gp6M3XPVJbuRM7vuHca4eTJ-cZXVd3B-ObiUEPy9_S6PKC6Ol8fFSwp5TKQReeeF3fkfs4xsUCa7j6ymNptrxXCD_tXiV5F3ssJjVqJWebwAPsmMfEF7JgguKxcLh95KnwZ71oWLfM7-E0ATS0WQFc1VWxi_Em38Bh36sHrix6Um4FZYbyNKZ6Fv5fAR8_MHjjEEgrmKHJZCXDM3qDCrTBkZspudwh7ItjDBvwK"/>
+                </div>
+                <div class="flex-none w-[280px] rounded-3xl overflow-hidden shadow-xl border-8 border-inverse-surface bg-inverse-surface">
+                    <img class="w-full object-cover" alt="Loyalty Program Points Rewards Screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA49ihDcJb8zadK4pj8KMnI30_1ByHtEElO4pqVCLNwWFGNcwcxCeCaxYf6IPKDsUmOpjU8vZztHpomw5tXhtbGzPGhZfoGxPWTFCY_9an6Fc95abu4bVzX971iWubt9LqtUb50HCIAk0znml_M38weAJVdB52x7ETnjCE_GFhTy318SonulL5Gsp6eCtH-IpxMn7uToVvq9eHqokpIhyfciiiJ-j-zNgVUDQoDAFun2OLb92FMPuaHCUAC9xDWvJWr2CZOY0sDQcX"/>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Coverage Zones & Map -->
+        <section class="py-24 max-w-7xl mx-auto px-4 md:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="h-[450px] rounded-3xl overflow-hidden border border-outline-variant shadow-lg relative">
+                    <img class="w-full h-full object-cover" alt="Bengaluru coverage map showing 10-minute dark store networks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC99L4IMRqO0JW-AQkxN1vTFcq99InhR9AZYbl7GcSls-D1QrE7O_3Kb_PxvrpUAvQfLawWE_CcGXn8qeTBy63ZiSXbWfUeQj0jESvItELJdQycUUOlrAiJQj5xNs6GvwIAz-qwEl4N1sEiz-JrQ7b6iB82D-dGSiunx95h7nIR_nxHwMRKNzR-D3VBXXUitbgtNNY--eETom4U-RzsCuUgER4bmC9NTXKP3E1OURVO9mXH7Y23Ua5EGdQDbhJxfIgOyNaHSkfgFtkh"/>
+                    <div class="absolute inset-0 bg-primary/5 pointer-events-none"></div>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-extrabold text-on-surface mb-6">Growing Fast across India</h2>
+                    <p class="text-base text-on-surface-variant mb-10 leading-relaxed">
+                        We operate a strategic grid of micro-fulfillment "dark stores" situated tightly in serving radii to keep delivery times strictly under 10 minutes.
+                    </p>
+                    <a href="serviceability.html" class="inline-flex items-center gap-2 bg-primary text-on-primary px-5 py-3 rounded-xl font-bold text-sm mb-8 hover:bg-primary-container transition-colors">
+                        Check Bihar serviceability
+                        <span class="material-symbols-outlined text-base">arrow_forward</span>
+                    </a>
+                    <div class="grid grid-cols-2 gap-6">
+                        <a href="bhagalpur.html" class="p-6 bg-white dark:bg-surface-container-lowest rounded-2xl border border-outline-variant hover:border-primary transition-all cursor-pointer">
+                            <h4 class="font-bold text-lg text-on-surface mb-2">Bhagalpur</h4>
+                            <p class="text-xs text-on-surface-variant">Live in 6 zones (Tilkamanjhi, Adampur, Barari, etc.)</p>
+                        </a>
+                        <div class="p-6 bg-white dark:bg-surface-container-lowest rounded-2xl border border-outline-variant hover:border-primary transition-all cursor-pointer">
+                            <h4 class="font-bold text-lg text-on-surface mb-2">Delhi NCR</h4>
+                            <p class="text-xs text-on-surface-variant">Live in 35+ Zones (Connaught Place, Noida, etc.)</p>
+                        </div>
+                        <div class="p-6 bg-white dark:bg-surface-container-lowest rounded-2xl border border-outline-variant hover:border-primary transition-all cursor-pointer">
+                            <h4 class="font-bold text-lg text-on-surface mb-2">Mumbai</h4>
+                            <p class="text-xs text-on-surface-variant">Live in 25+ Zones (Andheri, Bandra, etc.)</p>
+                        </div>
+                        <div class="p-6 bg-white dark:bg-surface-container-lowest rounded-2xl border border-outline-variant hover:border-primary transition-all cursor-pointer">
+                            <h4 class="font-bold text-lg text-on-surface mb-2">Hyderabad</h4>
+                            <p class="text-xs text-on-surface-variant">Live in 30+ Zones (Gachibowli, Madhapur, etc.)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="py-20 bg-surface-container-low transition-colors">
+            <div class="max-w-7xl mx-auto px-4 md:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-on-surface mb-4">Loved by Your Neighbors</h2>
+                    <p class="text-sm text-on-surface-variant max-w-xl mx-auto">Hear what our customers, store partners, and delivery riders have to say.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="p-8 rounded-2xl bg-white dark:bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+                        <p class="text-sm italic text-on-surface-variant leading-relaxed">"Honestly, the 10-minute delivery is a lifesaver. I forgot fresh milk for my toddler's breakfast, ordered, and it was at my door before the tea water boiled."</p>
+                        <div class="flex items-center gap-4 mt-6 pt-6 border-t border-outline-variant">
+                            <img class="w-10 h-10 rounded-full object-cover" alt="Rohan Verma" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv5UxPl2mA_m1XN6RoPkgys8AiS2urn9pKHz6UyfI3MMUJNYdPc7stVnRP8y1YDIrUruEZG1maTKg2Pp3k15Nro1GHxjNjx5eM2oYyYFBzr5YFgZnrv4JmXv4krL2Piw6YboxseXpMLef3DkPP4xu8NZH5oyeebESPq_BnmDcAoOqp4TmlnibWvvRJdUDxiI3Sy114p-vGYeXn4x4GDRI4h8pLEaeZAHaONV10m7izqUe6kTb8bEIPfs1EoCUviLRw77oUWdvA4Z7D"/>
+                            <div>
+                                <h4 class="font-bold text-sm">Rohan Verma</h4>
+                                <p class="text-[10px] text-on-surface-variant">Customer (Bengaluru)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8 rounded-2xl bg-white dark:bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+                        <p class="text-sm italic text-on-surface-variant leading-relaxed">"LISTING on QuickBazar doubled RK provisions orders in the first 2 weeks. The stock tracking insights help me buy exactly what neighborhood kids buy on weekends."</p>
+                        <div class="flex items-center gap-4 mt-6 pt-6 border-t border-outline-variant">
+                            <img class="w-10 h-10 rounded-full object-cover" alt="Rajesh Kumar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTn8LZQQp1_DCZ9duwN2imZAJwmuP-6Gdr4-uYrKCM6OiKbb8hUaWWlVuL_Kaq0WKq0FxQ8ILPnVGHI0qHrWA9gLhs9Z96mhdxA17ZXZc4CmEmLA1jrLOiJ6547xJ6_WTupVVKJ-BLf0L4a2ZjyoAuq-R13pkpXCn2vp3uM6lsN5IQpND8E4jI0B-tK0IzKlMklkOpdZvuRCf_G-NcMN2jYZSPtYWvqn8sux_ckdt_i_PDo4t-hmVELp3p_16AOyntZg_3kro0rOS7"/>
+                            <div>
+                                <h4 class="font-bold text-sm">Rajesh Kumar</h4>
+                                <p class="text-[10px] text-on-surface-variant">Store Owner, RK provisions (Mumbai)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8 rounded-2xl bg-white dark:bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+                        <p class="text-sm italic text-on-surface-variant leading-relaxed">"The flexible shifts are fantastic. I deliver for 4 hours post my morning college classes. Weekly settlements allow me to cover hostel costs easily."</p>
+                        <div class="flex items-center gap-4 mt-6 pt-6 border-t border-outline-variant">
+                            <img class="w-10 h-10 rounded-full object-cover" alt="Rahul S." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAW0LqAqZX6d7Zw2T-Ypw7SWy9_Kc9BlfNuZgv0dU_rP_m9DwnBd_v00qqXHB9Sx_AK0hlqTri4SQVE6dbspO6xJRfQnMntLLUW-1TWOeu3FrjOSYjsiPmCFMCfVSPl5xRjwsOeIYdoL2EpgyqY3r3SZEX4yy-Mi4VbnLT9MRKHpPF51s999EV6K0abdkh6d9XCDSxr9TdGU2zuCIKJ4WS39SPZWhNHvUVMlfrDMbLmqTRIgVMtK7lDtUClPQx9Khg4_i4BI29qPSY"/>
+                            <div>
+                                <h4 class="font-bold text-sm">Rahul S.</h4>
+                                <p class="text-[10px] text-on-surface-variant">Delivery Partner (Delhi)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Global Footer Placeholder -->
+    <div id="global-footer" class="hidden md:block"></div>
+    <div id="mobile-footer-nav" class="hidden md:block"></div>
+
+    <!-- Scripts -->
+    <script src="shared.js"></script>
+    <script>
+        // Hero pincode validator
+        document.getElementById('hero-check-btn').addEventListener('click', () => {
+            const pinVal = document.getElementById('hero-pincode-input').value;
+            if(!pinVal) return alert('Please input a valid pincode first!');
+            if (LocationSystem.checkService(pinVal)) {
+                let addr = pinVal === '560034' ? 'Koramangala, Bengaluru' :
+                           pinVal === '560038' ? 'Indiranagar, Bengaluru' :
+                           pinVal === '560008' ? 'Halasuru, Bengaluru' :
+                           pinVal === '110001' ? 'Connaught Place, Delhi' :
+                           ['812001', '812002', '812003'].includes(pinVal) ? 'Bhagalpur, Bihar' : 'Indiranagar, Bengaluru';
+                LocationSystem.save(addr);
+                CartSystem.showToast(`Success! QuickBazar is live at ${addr}. Finding stores...`);
+                if (['812001', '812002', '812003'].includes(pinVal)) {
+                    setTimeout(() => {
+                        window.location.href = 'bhagalpur.html';
+                    }, 900);
+                }
+            } else {
+                alert(`We aren't in ${pinVal} just yet! Try zones like 560038, 560034, 110001, or Bhagalpur pincodes 812001-812003.`);
+            }
+        });
+
+        // Add to Cart helper
+        function addFromHome(id, name, price, img) {
+            CartSystem.add({ id, name, price, img });
+        }
+
+        // Horizontal Carousel sliding
+        const track = document.getElementById('carousel-track');
+        document.getElementById('slide-left-btn').addEventListener('click', () => {
+            track.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+        document.getElementById('slide-right-btn').addEventListener('click', () => {
+            track.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+
+        const mobileBurgerBtn = document.getElementById('mobile-burger-menu-btn');
+        const mobileSidebar = document.getElementById('mobile-sidebar');
+        const mobileOverlay = document.getElementById('mobile-sidebar-overlay');
+        function toggleMobileMenu() {
+            const isOpen = mobileSidebar.classList.contains('translate-x-0');
+            mobileSidebar.classList.toggle('translate-x-0', !isOpen);
+            mobileSidebar.classList.toggle('-translate-x-full', isOpen);
+            mobileOverlay.classList.toggle('opacity-0', isOpen);
+            mobileOverlay.classList.toggle('pointer-events-none', isOpen);
+        }
+        if (mobileBurgerBtn && mobileSidebar && mobileOverlay) {
+            mobileBurgerBtn.addEventListener('click', toggleMobileMenu);
+            mobileOverlay.addEventListener('click', toggleMobileMenu);
+        }
+    </script>
+
+    <!-- JSON-LD LocalBusiness & Organization Schemas -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "QuickBazar Hyperlocal Q-Commerce",
+      "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDnklD4iq3lSMq5ZUxqyYqyEAjDhxmJOpnyuvKvR-R1n5DZoeCOdanq_1PNG8ZD50gmbFqBMsk01yFFvsI6xwonpFWfAc3nSiA-E0kcAX3A3C1av90Qq7eB78yL1Fm2QmkcCQBarzIMxpWu8e7-0wEPIR1nUuJm-Pdkhgv_iZ2Qi2cduDUiNIumY2lIz-G1f_Q03CV-_L0q6w2UWLWWZVE28F-oOuhD2zVIJAokeT6U88vhaUeT_SZgvgCYH1EjfBV8DXtOip9GqyS5",
+      "telephone": "+91-1800-QUICK-BAZAR",
+      "email": "support@quickbazar.in",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Tech Park, Koramangala",
+        "addressLocality": "Bengaluru",
+        "addressRegion": "Karnataka",
+        "postalCode": "560034",
+        "addressCountry": "IN"
+      },
+      "url": "https://quickbazar.in"
+    }
+    </script>
+</body>
+</html>

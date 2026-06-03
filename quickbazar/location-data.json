@@ -1,0 +1,72 @@
+{
+  "cities": [
+    {
+      "city_id": "BHG-01",
+      "city_name": "Bhagalpur",
+      "slug": "bhagalpur",
+      "district": "Bhagalpur",
+      "state": "Bihar",
+      "status": "active",
+      "launch_phase": "Phase 1",
+      "supported_pincodes": ["812001", "812002", "812003"],
+      "active_zones": ["Tilkamanjhi", "Adampur", "Barari", "Nathnagar", "Sabour", "Kachahari Chowk"],
+      "coming_soon_zones": [],
+      "average_delivery_time": "12 mins",
+      "delivery_radius_km": 5,
+      "dark_store_count": 4,
+      "partner_store_count": 45,
+      "rider_count": 120,
+      "meta_title": "QuickBazar in Bhagalpur | Fast Grocery Delivery Near You",
+      "meta_description": "Order groceries, dairy, snacks and daily essentials from trusted local stores in Bhagalpur with QuickBazar. 10-minute delivery active in Tilkamanjhi, Adampur, and more."
+    },
+    {
+      "city_id": "MDP-02",
+      "city_name": "Madhepura",
+      "slug": "madhepura",
+      "district": "Madhepura",
+      "state": "Bihar",
+      "status": "coming_soon",
+      "launch_phase": "Phase 2",
+      "supported_pincodes": ["852113"],
+      "active_zones": [],
+      "coming_soon_zones": ["Madhepura Town", "College Chowk", "Bypass Road", "Singheshwar"],
+      "average_delivery_time": "TBD",
+      "delivery_radius_km": 4,
+      "dark_store_count": 0,
+      "partner_store_count": 0,
+      "rider_count": 0,
+      "meta_title": "QuickBazar Launching Soon in Madhepura | Join the Waitlist",
+      "meta_description": "QuickBazar is coming to Madhepura. Get ready for 10-minute delivery of fresh essentials and join the waitlist for launch offers."
+    },
+    {
+      "city_id": "KGA-03",
+      "city_name": "Khagaria",
+      "slug": "khagaria",
+      "district": "Khagaria",
+      "state": "Bihar",
+      "status": "coming_soon",
+      "launch_phase": "Phase 2",
+      "supported_pincodes": ["851204"],
+      "active_zones": [],
+      "coming_soon_zones": ["Khagaria Town", "Gogri", "Mansi", "Alauli"],
+      "average_delivery_time": "TBD",
+      "delivery_radius_km": 4,
+      "meta_title": "QuickBazar Khagaria | Rapid Grocery Delivery Coming Soon",
+      "meta_description": "Bringing 10-minute grocery delivery to Khagaria. Stay tuned for our launch in Khagaria Town, Mansi, and more."
+    },
+    {
+      "city_id": "PRN-04",
+      "city_name": "Purnea",
+      "slug": "purnea",
+      "district": "Purnea",
+      "state": "Bihar",
+      "status": "planned",
+      "launch_phase": "Phase 3",
+      "supported_pincodes": ["854301"],
+      "active_zones": [],
+      "planned_zones": ["Line Bazar", "Bhatta Bazar", "Gulabbagh", "Madhubani"],
+      "meta_title": "QuickBazar Purnea | Vote for Your City",
+      "meta_description": "QuickBazar is planning expansion to Purnea. Request your area and help us prioritize our launch."
+    }
+  ]
+}

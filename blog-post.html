@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title id="seo-title">QuickBazar Insights Article</title>
+    <meta id="seo-desc" name="description" content="Read QuickBazar educational insights and neighborhood q-commerce updates."/>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2d8a39",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#3fa34d",
+                        "on-primary-container": "#f7fff1",
+                        secondary: "#745b00",
+                        "secondary-container": "#FFC107",
+                        "on-secondary-container": "#6e5700",
+                        background: "#f8f9ff",
+                        "on-surface": "#121c2a",
+                        "on-surface-variant": "#3f493d",
+                        outline: "#6f7a6c",
+                        "outline-variant": "#bfcaba",
+                        "surface-container": "#e6eeff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                        lg: "12px",
+                        xl: "16px",
+                        full: "9999px"
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface transition-colors min-h-screen flex flex-col justify-between" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+    <!-- Header Placeholder -->
+    <div id="global-header"></div>
+
+    <main class="pt-28 pb-16 px-4 max-w-4xl mx-auto w-full">
+        
+        <!-- ARTICLE CANVAS VIEW -->
+        <article id="article-workspace" class="space-y-8 animate-in fade-in duration-300">
+            <!-- Breadcrumbs -->
+            <nav class="flex items-center gap-2 text-xs font-bold text-on-surface-variant uppercase tracking-wider">
+                <a href="index.html" class="hover:text-primary transition-colors">Home</a>
+                <span class="material-symbols-outlined text-xs">chevron_right</span>
+                <a href="blog.html" class="hover:text-primary transition-colors">Blog</a>
+                <span class="material-symbols-outlined text-xs">chevron_right</span>
+                <span class="text-primary" id="breadcrumb-post-title">Article Reader</span>
+            </nav>
+
+            <!-- Main Post Title and Category -->
+            <header class="space-y-4">
+                <span id="post-category" class="inline-block bg-primary/10 text-primary dark:text-primary-fixed font-bold text-xs px-3.5 py-1.5 rounded-full uppercase tracking-wider">Groceries</span>
+                <h1 id="post-title" class="text-3xl md:text-5xl font-extrabold text-on-surface leading-tight">Leafy Green Vegetables Freshness Secrets</h1>
+                
+                <!-- Author & Date layout -->
+                <div class="flex items-center gap-4 border-y border-outline-variant/30 py-4">
+                    <img id="post-author-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv5UxPl2mA_m1XN6RoPkgys8AiS2urn9pKHz6UyfI3MMUJNYdPc7stVnRP8y1YDIrUruEZG1maTKg2Pp3k15Nro1GHxjNjx5eM2oYyYFBzr5YFgZnrv4JmXv4krL2Piw6YboxseXpMLef3DkPP4xu8NZH5oyeebESPq_BnmDcAoOqp4TmlnibWvvRJdUDxiI3Sy114p-vGYeXn4x4GDRI4h8pLEaeZAHaONV10m7izqUe6kTb8bEIPfs1EoCUviLRw77oUWdvA4Z7D" class="w-12 h-12 rounded-full object-cover border border-outline-variant shadow-sm" alt="Author"/>
+                    <div>
+                        <p class="font-bold text-sm text-on-surface" id="post-author-name">Anjali Mehta</p>
+                        <p class="text-[10px] text-on-surface-variant mt-0.5" id="post-meta-details">Published May 28, 2026 â€¢ 4 min read</p>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Banner Photo -->
+            <div class="rounded-3xl overflow-hidden shadow-md max-h-[420px]">
+                <img id="post-banner-img" src="" class="w-full h-full object-cover" alt="Article Banner"/>
+            </div>
+
+            <!-- HTML Main Content Placeholder -->
+            <div id="post-html-content" class="prose max-w-none text-on-surface-variant space-y-6">
+                <!-- Loaded dynamically -->
+            </div>
+
+            <!-- Tags List -->
+            <div class="flex flex-wrap gap-2 border-t border-outline-variant/30 pt-6" id="post-tags-list">
+                <!-- Loaded dynamically -->
+            </div>
+
+            <!-- Interactive Comments section -->
+            <section class="border-t border-outline-variant/30 pt-12 space-y-6">
+                <h3 class="text-xl font-bold text-on-surface">Discussion Comments</h3>
+                
+                <!-- Comment submission Form -->
+                <form id="comment-submission-form" class="space-y-4 bg-surface-container-low dark:bg-surface-container p-6 rounded-2xl border border-outline-variant">
+                    <p class="text-xs text-on-surface-variant font-bold">Write a comment...</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input id="comment-author" class="px-4 py-2.5 text-xs border border-outline-variant rounded-lg dark:bg-surface-container-lowest outline-none focus:ring-2 focus:ring-primary" placeholder="Your Name" required type="text"/>
+                        <button class="bg-primary hover:bg-primary-container text-on-primary font-bold px-4 py-2.5 rounded-lg text-xs transition-transform active:scale-95 self-end" type="submit">Submit Comment</button>
+                    </div>
+                    <textarea id="comment-body" class="w-full p-4 text-xs border border-outline-variant rounded-lg dark:bg-surface-container-lowest outline-none focus:ring-2 focus:ring-primary" placeholder="Enter your comments feedback..." rows="3" required></textarea>
+                </form>
+
+                <!-- Comments List container -->
+                <div class="space-y-4" id="comments-feed-list">
+                    <div class="bg-white dark:bg-surface-container p-4 rounded-xl border border-outline-variant">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-bold text-xs text-on-surface">Suresh V.</span>
+                            <span class="text-[9px] text-outline">2 hours ago</span>
+                        </div>
+                        <p class="text-xs text-on-surface-variant leading-relaxed">This paper towel wrap hack literally changed my kitchen storage. Coriander has been fresh for 10 days now. Brilliant guide!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Related Articles list -->
+            <section class="border-t border-outline-variant/30 pt-12 space-y-6">
+                <h3 class="text-2xl font-bold text-on-surface">Related Insights</h3>
+                <div class="grid md:grid-cols-2 gap-6" id="related-posts-container">
+                    <!-- Loaded dynamically -->
+                </div>
+            </section>
+        </article>
+
+        <!-- ARTICLE EMPTY STATE (POST NOT FOUND) -->
+        <div id="article-empty-state" class="hidden text-center p-24 space-y-6">
+            <span class="material-symbols-outlined text-[80px] text-outline animate-pulse">article_off</span>
+            <div class="space-y-2">
+                <h1 class="text-3xl font-extrabold text-on-surface">Article Not Found</h1>
+                <p class="text-sm text-on-surface-variant max-w-sm mx-auto">Apologies, we could not locate any active blog article matching the requested reference query code.</p>
+            </div>
+            <a href="blog.html" class="inline-block bg-primary text-on-primary font-bold px-8 py-3.5 rounded-xl text-xs hover:scale-105 active:scale-95 transition-transform shadow-md">Return to Blog Directory</a>
+        </div>
+    </main>
+
+    <!-- Global Footer -->
+    <div id="global-footer"></div>
+    <div id="mobile-footer-nav"></div>
+
+    <!-- Scripts -->
+    <script src="blog-db.js"></script>
+    <script src="shared.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadBlogPostDetails();
+        });
+
+        function loadBlogPostDetails() {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+            const workspace = document.getElementById('article-workspace');
+            const emptyState = document.getElementById('article-empty-state');
+
+            const post = BlogDB.posts.find(p => p.id === id);
+
+            if(!post) {
+                workspace.style.display = 'none';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            // Bind values
+            document.getElementById('seo-title').textContent = `${post.title} | QuickBazar Insights`;
+            document.getElementById('seo-desc').setAttribute('content', post.summary);
+            document.getElementById('breadcrumb-post-title').textContent = post.title;
+            document.getElementById('post-category').textContent = post.category;
+            document.getElementById('post-title').textContent = post.title;
+            document.getElementById('post-author-name').textContent = post.author;
+            document.getElementById('post-author-img').src = post.authorImg;
+            document.getElementById('post-meta-details').textContent = `Published ${post.date} â€¢ ${post.readTime}`;
+            document.getElementById('post-banner-img').src = post.img;
+            document.getElementById('post-banner-img').alt = post.title;
+            document.getElementById('post-html-content').innerHTML = post.content;
+
+            // Load Tags
+            const tagContainer = document.getElementById('post-tags-list');
+            tagContainer.innerHTML = '';
+            post.tags.forEach(tag => {
+                const badge = document.createElement('span');
+                badge.className = 'bg-surface-container-low text-on-surface-variant font-bold text-[10px] px-3 py-1 rounded-full uppercase tracking-wider border border-outline-variant/30';
+                badge.textContent = `#${tag}`;
+                tagContainer.appendChild(badge);
+            });
+
+            // Load Related Posts
+            loadRelatedPosts(post);
+
+            // Inject JSON-LD Schema markup dynamically
+            injectArticleSchema(post);
+        }
+
+        function loadRelatedPosts(currentPost) {
+            const container = document.getElementById('related-posts-container');
+            container.innerHTML = '';
+
+            let count = 0;
+            BlogDB.posts.forEach(post => {
+                if(post.id !== currentPost.id && count < 2) {
+                    count++;
+                    const card = document.createElement('div');
+                    card.className = 'bg-white dark:bg-surface-container border border-outline-variant rounded-2xl overflow-hidden hover:shadow-md transition-all flex flex-col justify-between group';
+                    card.innerHTML = `
+                    <div class="h-40 overflow-hidden relative">
+                        <img src="${post.img}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                        <span class="absolute top-3 left-3 bg-secondary-container text-on-secondary-container font-bold text-[9px] px-2.5 py-1 rounded-full uppercase tracking-wider">${post.category}</span>
+                    </div>
+                    <div class="p-5 space-y-2">
+                        <span class="text-[10px] text-on-surface-variant font-bold">${post.date}</span>
+                        <h4 class="font-bold text-base text-on-surface group-hover:text-primary transition-colors leading-snug line-clamp-2">
+                            <a href="blog-post.html?id=${post.id}">${post.title}</a>
+                        </h4>
+                    </div>
+                    `;
+                    container.appendChild(card);
+                }
+            });
+        }
+
+        // Comments handler
+        document.getElementById('comment-submission-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const author = document.getElementById('comment-author').value;
+            const body = document.getElementById('comment-body').value;
+
+            const feed = document.getElementById('comments-feed-list');
+            const card = document.createElement('div');
+            card.className = 'bg-white dark:bg-surface-container p-4 rounded-xl border border-outline-variant animate-in slide-in-from-bottom-2 duration-300';
+            card.innerHTML = `
+            <div class="flex justify-between items-center mb-2">
+                <span class="font-bold text-xs text-on-surface">${author}</span>
+                <span class="text-[9px] text-outline">Just Now</span>
+            </div>
+            <p class="text-xs text-on-surface-variant leading-relaxed">${body}</p>
+            `;
+            feed.prepend(card);
+            
+            document.getElementById('comment-submission-form').reset();
+            CartSystem.showToast('Comment submitted successfully!');
+        });
+
+        // JSON-LD dynamic injection helper
+        function injectArticleSchema(post) {
+            const script = document.createElement('script');
+            script.type = 'application/ld+json';
+            script.innerHTML = JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "NewsArticle",
+                "headline": post.title,
+                "image": [post.img],
+                "datePublished": "2026-05-28T08:00:00+08:00",
+                "dateModified": "2026-05-28T09:00:00+08:00",
+                "author": [{
+                    "@type": "Person",
+                    "name": post.author,
+                    "url": "https://quickbazar.in/about"
+                }]
+            });
+            document.head.appendChild(script);
+        }
+    </script>
+</body>
+</html>

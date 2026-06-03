@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Serviceability Explorer | QuickBazar</title>
+    <meta name="description" content="Check QuickBazar delivery serviceability in Bihar cities including Bhagalpur, Madhepura, Khagaria, Purnea, Saharsa, and Banka."/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2d8a39",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#3fa34d",
+                        "on-primary-container": "#f7fff1",
+                        secondary: "#745b00",
+                        "secondary-container": "#FFC107",
+                        "on-secondary-container": "#6e5700",
+                        background: "#f8f9ff",
+                        surface: "#f8f9ff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#dee9fc",
+                        "surface-container-highest": "#d9e3f6",
+                        "on-surface": "#121c2a",
+                        "on-surface-variant": "#3f493d",
+                        outline: "#6f7a6c",
+                        "outline-variant": "#bfcaba",
+                        "inverse-surface": "#27313f",
+                        "inverse-on-surface": "#eaf1ff"
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .city-card { transition: transform .25s ease, box-shadow .25s ease; }
+        .city-card:hover { transform: translateY(-4px); }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col">
+    <header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl border-b border-outline-variant/30 shadow-sm">
+        <div class="flex justify-between items-center px-4 md:px-6 max-w-7xl mx-auto h-16">
+            <div class="flex items-center gap-6">
+                <a class="text-primary font-extrabold italic text-2xl" href="index.html">QuickBazar</a>
+                <div class="hidden md:flex items-center gap-2 text-primary font-bold border-b-2 border-primary pb-1">
+                    <span class="material-symbols-outlined text-base">location_on</span>
+                    <span class="text-sm">Check Serviceability</span>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center gap-8">
+                <a class="text-on-surface-variant font-semibold hover:text-primary transition-colors" href="index.html">Store</a>
+                <a class="text-primary font-semibold hover:text-primary transition-colors" href="serviceability.html">Areas</a>
+                <a class="text-on-surface-variant font-semibold hover:text-primary transition-colors" href="bhagalpur.html">Bhagalpur</a>
+                <a class="text-on-surface-variant font-semibold hover:text-primary transition-colors" href="support.html">Help</a>
+                <a class="text-on-surface-variant font-semibold hover:text-primary transition-colors" href="cart.html">Cart</a>
+                <a class="bg-primary text-on-primary px-6 py-2 rounded-lg font-bold active:scale-95 transition-transform" href="login.html">Login</a>
+            </nav>
+            <span class="md:hidden material-symbols-outlined text-primary">location_on</span>
+        </div>
+    </header>
+
+    <main class="pt-16 flex-grow">
+        <section class="relative py-16 md:py-24 overflow-hidden bg-surface-container-low">
+            <div class="absolute inset-0 opacity-10 pointer-events-none">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full blur-[100px] -mr-48 -mt-48"></div>
+                <div class="absolute bottom-0 left-0 w-96 h-96 bg-secondary rounded-full blur-[100px] -ml-48 -mb-48"></div>
+            </div>
+            <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 text-center">
+                <h1 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight text-on-surface">
+                    Fast Delivery in <span class="text-primary italic">Your Neighborhood</span>
+                </h1>
+                <p class="text-lg text-on-surface-variant mb-12 max-w-2xl mx-auto">
+                    Check if QuickBazar is delivering fresh groceries and essentials to your doorstep in 10 minutes.
+                </p>
+                <div class="max-w-3xl mx-auto bg-surface p-2 rounded-xl shadow-lg border border-outline-variant/30 flex flex-col md:flex-row gap-2 items-stretch">
+                    <div class="flex-grow flex items-center px-6 border-b md:border-b-0 md:border-r border-outline-variant/30 py-2">
+                        <span class="material-symbols-outlined text-primary mr-3">search</span>
+                        <input class="w-full bg-transparent border-none focus:ring-0 text-base text-on-surface placeholder:text-outline" id="serviceability-input" placeholder="Enter city or pincode" type="text"/>
+                    </div>
+                    <button class="flex items-center justify-center gap-3 px-6 py-3 text-primary font-bold hover:bg-primary/10 transition-colors rounded-lg" id="use-current-location" type="button">
+                        <span class="material-symbols-outlined">my_location</span>
+                        <span>Use Current Location</span>
+                    </button>
+                    <button class="bg-primary text-on-primary px-10 py-3 rounded-lg font-bold active:scale-95 transition-transform" id="check-serviceability" type="button">Check</button>
+                </div>
+                <p class="mt-4 text-sm font-semibold text-primary hidden" id="serviceability-result"></p>
+            </div>
+        </section>
+
+        <section class="py-6 border-b border-outline-variant/20 bg-surface">
+            <div class="max-w-7xl mx-auto px-4 md:px-6 flex flex-wrap justify-center gap-6">
+                <span class="flex items-center gap-3"><span class="w-3 h-3 rounded-full bg-primary-container"></span><span class="font-semibold">Available Now</span></span>
+                <span class="flex items-center gap-3"><span class="w-3 h-3 rounded-full bg-secondary-container"></span><span class="font-semibold">Launching Soon</span></span>
+                <span class="flex items-center gap-3"><span class="w-3 h-3 rounded-full bg-[#3b82f6]"></span><span class="font-semibold">Join Waitlist</span></span>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24">
+            <div class="max-w-7xl mx-auto px-4 md:px-6">
+                <div class="flex items-end justify-between mb-12">
+                    <div>
+                        <h2 class="text-3xl font-extrabold text-on-surface">Our Reach in Bihar</h2>
+                        <p class="text-base text-on-surface-variant mt-1">Expanding rapidly to serve more households.</p>
+                    </div>
+                    <span class="hidden md:inline-block font-bold bg-surface-container-high px-4 py-2 rounded-full text-on-surface-variant">6 Cities Tracked</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <article class="city-card bg-surface p-6 rounded-xl border border-outline-variant/30 shadow-sm flex flex-col">
+                        <div class="relative w-full aspect-video rounded-lg overflow-hidden mb-6">
+                            <img alt="Bhagalpur" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD72Ul9DF_m395DbYp1jAKNVxsr1dWchQTFiwAMZXCNzRz1PhveoL6Tkl5OsKzQCJknlZD9t8N9nnJGFJtsMimmnXR4KF_sPZ0iYoO84maRT9y56pHFalMNjv09Ty4BRcJpV2-cwDaNULlxmz2ReQm5ixBj4ezlusUsv7vLDpos18Qt4Gqhl16TqtlSdDXeaByV-zB6UGit_XXckU1R43KpTTc1650UKN9Tt0-BEMYTZ0k_I78tYxnm3lHlqb2SRliP59DdVNKoepTU"/>
+                            <span class="absolute top-3 right-3 bg-primary-container text-on-primary-container font-bold text-xs px-3 py-1 rounded-full flex items-center gap-1"><span class="material-symbols-outlined text-sm">check_circle</span>Available Now</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-on-surface mb-1">Bhagalpur</h3>
+                        <p class="text-on-surface-variant mb-6 flex-grow">Experience 10-minute grocery delivery across main city centers and suburbs.</p>
+                        <a class="w-full text-center bg-primary text-on-primary py-3 rounded-lg font-bold hover:bg-primary-container transition-colors" href="bhagalpur.html">Start Shopping</a>
+                    </article>
+                    <article class="city-card bg-surface p-6 rounded-xl border border-outline-variant/30 shadow-sm flex flex-col opacity-90">
+                        <div class="relative w-full aspect-video rounded-lg overflow-hidden mb-6 grayscale-[0.3]">
+                            <img alt="Madhepura" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwlrYFDHLJn3JzQWNF-a2L7plhjcfCrzdcl8lwRl5nWcBh4xz0OEfcHRvMSSoWP62WqYstmPNfRV4EYwvkRlH19lDlM9z0t16hYavPPlVmvrBqqs-JlVTJ6jnsfdIojIav-sLGjOvP7BkxWZS_raDCCmh0noMA_rOkCq-8IGKGrr-wZsual3k9iR03wtxt_8Mb0I3Fvp68kAo_78oWdGO_hWz-Kmw6djNZdrB1uK-1KP2VtZE_1658h2kFg815BubWyCfRf2RYtnhP"/>
+                            <span class="absolute top-3 right-3 bg-secondary-container text-on-secondary-container font-bold text-xs px-3 py-1 rounded-full">Launching Soon</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-on-surface mb-1">Madhepura</h3>
+                        <p class="text-on-surface-variant mb-6 flex-grow">Finalizing our delivery hubs. We'll be at your doorstep within 2 weeks.</p>
+                        <button class="w-full border border-primary text-primary py-3 rounded-lg font-bold hover:bg-primary/5 transition-colors notify-city" type="button">Notify Me</button>
+                    </article>
+                    <article class="city-card bg-surface p-6 rounded-xl border border-outline-variant/30 shadow-sm flex flex-col opacity-90">
+                        <div class="relative w-full aspect-video rounded-lg overflow-hidden mb-6 grayscale-[0.3]">
+                            <img alt="Khagaria" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi8J0lXFbJO-3VAojNBc5JmoxTJpzv70KCVLoC2tDuRgogeSqk3yvPE6B7CB8iHqpeb9hsAqFCApvmCGf98b8GAda3hO-rTtVjUaMWAgoA2-VEswZDufFt27ochXCdTGvOSOcDQsCt2vpT1I90afAwge5LRjctR9pLMf5vk832f39LOZZclXX2Un6ZvHsq3r93QkteXW05gnP4WvXC3Y1XGYMx7ZxqyUiunVvcgulu2B2LBt4xk-sJWr3Gp5YHjbMB7bX_qcooyIr1"/>
+                            <span class="absolute top-3 right-3 bg-secondary-container text-on-secondary-container font-bold text-xs px-3 py-1 rounded-full">Launching Soon</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-on-surface mb-1">Khagaria</h3>
+                        <p class="text-on-surface-variant mb-6 flex-grow">Warehousing setup in progress. Almost ready to serve your favorite essentials.</p>
+                        <button class="w-full border border-primary text-primary py-3 rounded-lg font-bold hover:bg-primary/5 transition-colors notify-city" type="button">Notify Me</button>
+                    </article>
+                    <article class="city-card bg-surface-container-low p-6 rounded-xl border border-outline-variant/20 shadow-sm flex flex-col opacity-80">
+                        <div class="flex items-center justify-between mb-3"><h3 class="text-2xl font-bold">Purnea</h3><span class="bg-[#3b82f6] text-white font-bold text-xs px-3 py-1 rounded-full">Join Waitlist</span></div>
+                        <p class="text-on-surface-variant mb-6 flex-grow">On our roadmap. Express your interest to speed up our launch.</p>
+                        <button class="flex items-center justify-center gap-3 text-primary font-bold notify-city" type="button">I'm interested <span class="material-symbols-outlined">arrow_forward</span></button>
+                    </article>
+                    <article class="city-card bg-surface-container-low p-6 rounded-xl border border-outline-variant/20 shadow-sm flex flex-col opacity-80">
+                        <div class="flex items-center justify-between mb-3"><h3 class="text-2xl font-bold">Saharsa</h3><span class="bg-[#3b82f6] text-white font-bold text-xs px-3 py-1 rounded-full">Join Waitlist</span></div>
+                        <p class="text-on-surface-variant mb-6 flex-grow">Currently scouting for dark store locations in Saharsa district headquarters.</p>
+                        <button class="flex items-center justify-center gap-3 text-primary font-bold notify-city" type="button">I'm interested <span class="material-symbols-outlined">arrow_forward</span></button>
+                    </article>
+                    <article class="city-card bg-surface-container-low p-6 rounded-xl border border-outline-variant/20 shadow-sm flex flex-col opacity-80">
+                        <div class="flex items-center justify-between mb-3"><h3 class="text-2xl font-bold">Banka</h3><span class="bg-[#3b82f6] text-white font-bold text-xs px-3 py-1 rounded-full">Join Waitlist</span></div>
+                        <p class="text-on-surface-variant mb-6 flex-grow">Building rider network in Banka. Join the waitlist for exclusive launch offers.</p>
+                        <button class="flex items-center justify-center gap-3 text-primary font-bold notify-city" type="button">I'm interested <span class="material-symbols-outlined">arrow_forward</span></button>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-surface-container-highest">
+            <div class="max-w-3xl mx-auto px-4 md:px-6">
+                <div class="bg-surface p-8 md:p-12 rounded-xl shadow-lg border border-outline-variant/30">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-extrabold text-on-surface mb-1">Request Your City</h2>
+                        <p class="text-on-surface-variant">Do not see your area listed? Tell us where to launch next.</p>
+                    </div>
+                    <form class="space-y-6" id="city-request-form">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <label class="space-y-1"><span class="font-bold text-sm">City Name</span><input class="w-full px-6 py-3 rounded-lg border border-outline-variant/50 focus:border-primary focus:ring-2 focus:ring-primary/20 bg-surface-container-lowest outline-none transition-all" placeholder="e.g. Gaya" required type="text"/></label>
+                            <label class="space-y-1"><span class="font-bold text-sm">Pincode</span><input class="w-full px-6 py-3 rounded-lg border border-outline-variant/50 focus:border-primary focus:ring-2 focus:ring-primary/20 bg-surface-container-lowest outline-none transition-all" placeholder="e.g. 800001" required type="text"/></label>
+                        </div>
+                        <label class="block space-y-1"><span class="font-bold text-sm">Email Address</span><input class="w-full px-6 py-3 rounded-lg border border-outline-variant/50 focus:border-primary focus:ring-2 focus:ring-primary/20 bg-surface-container-lowest outline-none transition-all" placeholder="Enter your email for launch updates" required type="email"/></label>
+                        <button class="w-full bg-primary text-on-primary py-4 rounded-lg font-bold shadow-lg active:scale-[0.98] transition-all" type="submit">Submit Request</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="w-full mt-auto bg-surface-container-lowest border-t border-outline-variant/20">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 px-4 md:px-6 py-12 max-w-7xl mx-auto">
+            <div><span class="text-2xl font-bold mb-6 block">QuickBazar</span><p class="text-on-surface-variant">Quickest 10-minute grocery delivery app in India.</p></div>
+            <div><h4 class="text-xl font-bold mb-3">Company</h4><a class="block text-on-surface-variant hover:text-primary" href="legal.html">Privacy Policy</a><a class="block text-on-surface-variant hover:text-primary" href="legal.html">Terms of Service</a><a class="block text-primary underline" href="serviceability.html">City Sitemap</a></div>
+            <div><h4 class="text-xl font-bold mb-3">Partner</h4><a class="block text-on-surface-variant hover:text-primary" href="rider.html">Rider Onboarding</a><a class="block text-on-surface-variant hover:text-primary" href="partner.html">Store Partner</a></div>
+            <div><h4 class="text-xl font-bold mb-3">Download App</h4><button class="bg-black text-white flex items-center gap-3 px-4 py-2 rounded-lg mb-2"><span class="material-symbols-outlined">phone_iphone</span>App Store</button><button class="bg-black text-white flex items-center gap-3 px-4 py-2 rounded-lg"><span class="material-symbols-outlined">play_arrow</span>Google Play</button></div>
+        </div>
+        <div class="px-4 md:px-6 py-6 border-t border-outline-variant/10 text-center">
+            <p class="text-on-surface-variant opacity-80">&copy; 2026 QuickBazar India. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center py-2 px-4 bg-surface/90 backdrop-blur-md z-50 rounded-t-xl shadow-lg">
+        <a class="flex flex-col items-center text-on-surface-variant p-2" href="index.html"><span class="material-symbols-outlined">home</span><span class="text-xs">Home</span></a>
+        <span class="flex flex-col items-center bg-primary-container text-on-primary rounded-full px-4 py-1"><span class="material-symbols-outlined">search</span><span class="text-xs">Search</span></span>
+        <a class="flex flex-col items-center text-on-surface-variant p-2" href="cart.html"><span class="material-symbols-outlined">shopping_bag</span><span class="text-xs">Orders</span></a>
+        <a class="flex flex-col items-center text-on-surface-variant p-2" href="login.html"><span class="material-symbols-outlined">person</span><span class="text-xs">Account</span></a>
+    </nav>
+
+    <script>
+        const input = document.getElementById('serviceability-input');
+        const result = document.getElementById('serviceability-result');
+        const cityRequestForm = document.getElementById('city-request-form');
+
+        document.getElementById('use-current-location').addEventListener('click', () => {
+            input.value = 'Bhagalpur, Bihar 812001';
+            result.textContent = 'QuickBazar is available in Bhagalpur. Redirecting to the city page...';
+            result.classList.remove('hidden');
+            setTimeout(() => { window.location.href = 'bhagalpur.html'; }, 900);
+        });
+
+        document.getElementById('check-serviceability').addEventListener('click', () => {
+            const query = input.value.toLowerCase().trim();
+            if (query.includes('bhagalpur') || query.includes('812001') || query.includes('812002') || query.includes('812003')) {
+                result.textContent = 'Great. QuickBazar is available in Bhagalpur.';
+                result.classList.remove('hidden');
+                setTimeout(() => { window.location.href = 'bhagalpur.html'; }, 900);
+            } else if (query.includes('madhepura') || query.includes('khagaria')) {
+                result.textContent = 'Launching soon. Join the waitlist below for early access.';
+                result.classList.remove('hidden');
+            } else {
+                result.textContent = 'We are not live there yet. Submit a city request below.';
+                result.classList.remove('hidden');
+            }
+        });
+
+        document.querySelectorAll('.notify-city').forEach(button => {
+            button.addEventListener('click', () => {
+                document.getElementById('city-request-form').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        cityRequestForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            alert('Thanks. Your city request has been recorded.');
+            cityRequestForm.reset();
+        });
+    </script>
+</body>
+</html>

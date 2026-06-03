@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>QuickBazar Blog - Q-Commerce, Kirana Success & Savings Tips</title>
+    <meta name="description" content="Explore QuickBazar's educational blog. Find fresh grocery storage hacks, q-commerce kirana growth stories, delivery job guides, and budget savings tips."/>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2d8a39",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#3fa34d",
+                        "on-primary-container": "#f7fff1",
+                        secondary: "#745b00",
+                        "secondary-container": "#FFC107",
+                        "on-secondary-container": "#6e5700",
+                        background: "#f8f9ff",
+                        "on-surface": "#121c2a",
+                        "on-surface-variant": "#3f493d",
+                        outline: "#6f7a6c",
+                        "outline-variant": "#bfcaba",
+                        "surface-container": "#e6eeff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                        lg: "12px",
+                        xl: "16px",
+                        full: "9999px"
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface transition-colors min-h-screen flex flex-col justify-between" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+    <!-- Header Placeholder -->
+    <div id="global-header"></div>
+
+    <main class="pt-28 pb-16 px-4 max-w-7xl mx-auto w-full">
+        <!-- SEO Breadcrumbs -->
+        <nav class="mb-6 flex items-center gap-2 text-xs font-bold text-on-surface-variant uppercase tracking-wider">
+            <a href="index.html" class="hover:text-primary transition-colors">Home</a>
+            <span class="material-symbols-outlined text-xs">chevron_right</span>
+            <span class="text-primary">Blog Directory</span>
+        </nav>
+
+        <!-- Blog Header -->
+        <header class="mb-12 text-center max-w-2xl mx-auto space-y-4">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-on-surface">QuickBazar Insights</h1>
+            <p class="text-sm text-on-surface-variant">Your neighborhood q-commerce handbook. Learn savings tips, vegetable freshness secrets, and local Kirana digitization stories.</p>
+        </header>
+
+        <!-- Search & Category Filters -->
+        <div class="space-y-6 mb-12">
+            <!-- Search bar -->
+            <div class="relative max-w-md mx-auto group">
+                <span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">search</span>
+                <input id="blog-search" class="w-full pl-12 pr-4 py-3 rounded-xl border border-outline-variant dark:bg-surface-container-lowest outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm transition-all shadow-sm" placeholder="Search articles or tag keywords..."/>
+            </div>
+
+            <!-- Category Filter Pills -->
+            <div class="flex flex-wrap justify-center gap-3">
+                <button onclick="filterCategory('All')" class="px-5 py-2 rounded-full font-bold text-xs bg-primary text-on-primary shadow-sm hover:opacity-90 transition-all cat-pill">All Insights</button>
+                <button onclick="filterCategory('Groceries')" class="px-5 py-2 rounded-full font-bold text-xs bg-white dark:bg-surface-container-lowest border border-outline-variant text-on-surface-variant hover:bg-surface-container transition-all cat-pill">Fresh Groceries</button>
+                <button onclick="filterCategory('Quick Commerce')" class="px-5 py-2 rounded-full font-bold text-xs bg-white dark:bg-surface-container-lowest border border-outline-variant text-on-surface-variant hover:bg-surface-container transition-all cat-pill">Q-Commerce Tech</button>
+                <button onclick="filterCategory('Savings Tips')" class="px-5 py-2 rounded-full font-bold text-xs bg-white dark:bg-surface-container-lowest border border-outline-variant text-on-surface-variant hover:bg-surface-container transition-all cat-pill">Savings & Budgeting</button>
+            </div>
+        </div>
+
+        <!-- Articles Grid -->
+        <div id="blog-posts-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Injected dynamically by JavaScript reading BlogDB -->
+        </div>
+
+        <!-- Empty State Container -->
+        <div id="blog-empty-state" class="hidden text-center p-12 text-on-surface-variant text-sm">
+            <span class="material-symbols-outlined text-[64px] text-outline mb-2">article_off</span>
+            <p class="font-bold">No articles found matching search criteria!</p>
+            <p class="text-xs mt-1">Try checking another query or filter category chip.</p>
+        </div>
+    </main>
+
+    <!-- Global Footer -->
+    <div id="global-footer"></div>
+    <div id="mobile-footer-nav"></div>
+
+    <!-- Scripts -->
+    <script src="blog-db.js"></script>
+    <script src="shared.js"></script>
+    <script>
+        let currentFilter = 'All';
+
+        function renderBlogPosts() {
+            const grid = document.getElementById('blog-posts-grid');
+            const emptyState = document.getElementById('blog-empty-state');
+            const query = document.getElementById('blog-search').value.toLowerCase().trim();
+
+            grid.innerHTML = '';
+            let count = 0;
+
+            BlogDB.posts.forEach(post => {
+                // Filter logic
+                const matchesCategory = currentFilter === 'All' || post.category === currentFilter;
+                const matchesQuery = post.title.toLowerCase().includes(query) || 
+                                     post.summary.toLowerCase().includes(query) ||
+                                     post.tags.some(tag => tag.toLowerCase().includes(query));
+
+                if(matchesCategory && matchesQuery) {
+                    count++;
+                    const card = document.createElement('div');
+                    card.className = 'bg-white dark:bg-surface-container border border-outline-variant rounded-2xl overflow-hidden hover:shadow-lg transition-all flex flex-col justify-between group';
+                    card.innerHTML = `
+                    <div>
+                        <!-- Thumbnail -->
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="${post.img}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                            <span class="absolute top-4 left-4 bg-secondary-container text-on-secondary-container font-bold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider">${post.category}</span>
+                        </div>
+                        
+                        <!-- Content -->
+                        <div class="p-6 space-y-4">
+                            <div class="flex items-center gap-3 text-xs text-on-surface-variant font-medium">
+                                <span>${post.date}</span>
+                                <span>â€¢</span>
+                                <span>${post.readTime}</span>
+                            </div>
+                            
+                            <h2 class="font-extrabold text-lg text-on-surface group-hover:text-primary transition-colors leading-snug">
+                                <a href="blog-post.html?id=${post.id}">${post.title}</a>
+                            </h2>
+                            
+                            <p class="text-xs text-on-surface-variant leading-relaxed line-clamp-3">${post.summary}</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Footer credentials -->
+                    <div class="p-6 border-t border-outline-variant/30 flex justify-between items-center bg-surface-container-low/30">
+                        <div class="flex items-center gap-2">
+                            <img src="${post.authorImg}" class="w-8 h-8 rounded-full object-cover border border-outline-variant" alt="${post.author}"/>
+                            <span class="text-xs font-bold text-on-surface-variant">${post.author}</span>
+                        </div>
+                        <a href="blog-post.html?id=${post.id}" class="text-xs font-bold text-primary hover:underline inline-flex items-center gap-0.5">Read More <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+                    </div>
+                    `;
+                    grid.appendChild(card);
+                }
+            });
+
+            emptyState.style.display = count === 0 ? 'block' : 'none';
+        }
+
+        function filterCategory(catName) {
+            currentFilter = catName;
+            
+            // Sync pill buttons classes
+            const pills = document.querySelectorAll('.cat-pill');
+            pills.forEach(pill => {
+                if(pill.textContent.includes(catName === 'All' ? 'All' : catName === 'Groceries' ? 'Fresh' : catName === 'Quick Commerce' ? 'Q-Commerce' : 'Savings')) {
+                    pill.className = 'px-5 py-2 rounded-full font-bold text-xs bg-primary text-on-primary shadow-sm hover:opacity-90 transition-all cat-pill';
+                } else {
+                    pill.className = 'px-5 py-2 rounded-full font-bold text-xs bg-white dark:bg-surface-container-lowest border border-outline-variant text-on-surface-variant hover:bg-surface-container transition-all cat-pill';
+                }
+            });
+
+            renderBlogPosts();
+        }
+
+        // Bind search input triggers
+        document.getElementById('blog-search').addEventListener('input', renderBlogPosts);
+
+        // Init render trigger
+        document.addEventListener('DOMContentLoaded', () => {
+            renderBlogPosts();
+        });
+    </script>
+</body>
+</html>
