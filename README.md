@@ -45,13 +45,11 @@ The property section helps property owners explore opportunities connected with 
 
 The app includes blog pages for updates and information, along with support pages to help users understand and use the platform.
 
-## Live Website
+## Deployment
 
-The app is live here:
+This version is a full-stack Next.js app with API routes and Prisma. It should be deployed on a platform that supports a Node.js server and PostgreSQL, such as Vercel.
 
-```text
-https://rajk14.github.io/qwick-bazaar/
-```
+GitHub Pages is not suitable for this version because it only serves static files and cannot run API routes, Prisma, or database-backed admin/catalog features.
 
 ## Full-Stack Setup
 
