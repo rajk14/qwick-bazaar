@@ -1,132 +1,57 @@
 # Qwick Bazaar
 
-Qwick Bazaar is a multi-page local commerce website built with plain HTML and JavaScript. It includes customer-facing pages for shopping, serviceability, location coverage, partner onboarding, rider onboarding, property listings, support, legal information, and blog content.
+Qwick Bazaar is a local quick-commerce and service platform built for customers, partners, riders, and property owners. The app is designed to help users discover local services, check availability in their area, explore service locations, and connect with the Qwick Bazaar ecosystem.
 
-Live site: https://rajk14.github.io/qwick-bazaar/
+Live app: https://rajk14.github.io/qwick-bazaar/
 
-Repository: https://github.com/rajk14/qwick-bazaar
+## About The App
 
-## Tech Stack
+Qwick Bazaar brings multiple local services into one simple experience. Customers can browse the platform, check whether services are available in their location, view city-specific service information, explore cart and account pages, and get help through support pages.
 
-### Frontend
+The app also includes dedicated sections for business partners, delivery riders, and property owners who want to join or work with Qwick Bazaar.
 
-- HTML5
-- CSS inside page files
-- Vanilla JavaScript
-- Static JSON data
+## What Users Can Do
 
-### Backend
+- Explore Qwick Bazaar services from the homepage
+- Check service availability by location
+- View city-specific service information
+- Browse cart and login pages
+- Read blogs and updates
+- Contact support
+- Review legal and policy information
+- Apply as a partner
+- Apply as a rider
+- Explore property-related opportunities
 
-- No backend server is required for the current version.
-- The site is deployed as a static frontend.
-- Future backend integration can be added with APIs for authentication, cart checkout, orders, partner onboarding, location serviceability, and blog/admin management.
+## Main Sections
 
-### Deployment
+### Customers
 
-- GitHub Pages
-- GitHub Actions workflow for Pages deployment
-- `.nojekyll` enabled for direct static asset serving
+Customers can explore Qwick Bazaar, check whether the service is available in their area, access cart and login pages, and find support when needed.
 
-## Features
+### Partners
 
-- Homepage for Qwick Bazaar services
-- Location and serviceability pages
-- Shopping cart page
-- Login page UI
-- Partner onboarding page
-- Rider onboarding page
-- Property page
-- Blog listing and blog post pages
-- Support and legal pages
-- Shared JavaScript utilities through `shared.js`
-- Location data stored in `quickbazar/location-data.json`
+The partner section is made for local businesses and service providers who want to join Qwick Bazaar and reach more customers.
 
-## Project Structure
+### Riders
 
-```text
-.
-├── .github/workflows/pages.yml
-├── quickbazar/
-│   └── location-data.json
-├── about.html
-├── bhagalpur.html
-├── blog.html
-├── blog-db.js
-├── blog-post.html
-├── cart.html
-├── index.html
-├── legal.html
-├── location.html
-├── login.html
-├── partner.html
-├── property.html
-├── rider.html
-├── serviceability.html
-├── shared.js
-├── support.html
-├── .nojekyll
-├── LICENSE
-└── README.md
-```
+The rider section is designed for people who want to work with Qwick Bazaar for delivery and local service operations.
 
-## Run Locally
+### Property Owners
 
-Because this is a static website, it can be opened directly in a browser.
+The property section helps property owners explore opportunities connected with Qwick Bazaar locations and operations.
 
-Open:
+### Blog And Support
 
-```text
-index.html
-```
+The app includes blog pages for updates and information, along with support pages to help users understand and use the platform.
 
-Recommended local server:
+## Live Website
 
-```powershell
-python -m http.server 8000
-```
-
-Then visit:
-
-```text
-http://localhost:8000
-```
-
-## GitHub Pages Deployment
-
-The site is deployed through GitHub Pages.
-
-Deployment workflow:
-
-```text
-.github/workflows/pages.yml
-```
-
-The live URL is:
+The app is live here:
 
 ```text
 https://rajk14.github.io/qwick-bazaar/
 ```
-
-## Suggested Full-Stack Roadmap
-
-The current project is frontend-only. To make it a complete full-stack application, the next backend pieces can be added:
-
-- User authentication and session handling
-- Product catalog API
-- Cart and checkout API
-- Order creation and tracking
-- Partner registration backend
-- Rider registration backend
-- Location and serviceability API
-- Admin dashboard for products, orders, riders, and partners
-- Database for users, products, orders, locations, partners, and blog posts
-
-Possible backend stack options:
-
-- Node.js, Express, and MongoDB
-- Node.js, Express, and PostgreSQL
-- Next.js with API routes
-- Firebase or Supabase for faster backend setup
 
 ## License
 
