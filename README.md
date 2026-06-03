@@ -53,6 +53,29 @@ The app is live here:
 https://rajk14.github.io/qwick-bazaar/
 ```
 
+## Full-Stack Setup
+
+```powershell
+npm install
+copy .env.example .env
+npx prisma generate
+npx prisma migrate dev --name init
+npm run prisma:seed
+npm run dev
+```
+
+Open:
+
+```text
+http://localhost:3000
+```
+
+Admin catalog:
+
+```text
+http://localhost:3000/admin/catalog
+```
+
 ## License
 
 This project is licensed under the terms in the `LICENSE` file.
